@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D0218AB523C5599D0004931D /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0218AB423C5599D0004931D /* Colors.swift */; };
 		D0EE456C23C5400C0011B364 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EE456B23C5400C0011B364 /* AppDelegate.swift */; };
 		D0EE456E23C5400C0011B364 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EE456D23C5400C0011B364 /* SceneDelegate.swift */; };
 		D0EE457023C5400C0011B364 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EE456F23C5400C0011B364 /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D0218AB423C5599D0004931D /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		D0EE456823C5400C0011B364 /* MovieFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0EE456B23C5400C0011B364 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0EE456D23C5400C0011B364 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +39,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D0218AB023C5590F0004931D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D0218AB123C5591B0004931D /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		D0218AB223C559220004931D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D0218AB323C5598A0004931D /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				D0218AB423C5599D0004931D /* Colors.swift */,
+			);
+			name = Constants;
+			sourceTree = "<group>";
+		};
 		D0EE455F23C5400C0011B364 = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +87,10 @@
 		D0EE456A23C5400C0011B364 /* MovieFinder */ = {
 			isa = PBXGroup;
 			children = (
+				D0218AB323C5598A0004931D /* Constants */,
+				D0218AB223C559220004931D /* Controller */,
+				D0218AB123C5591B0004931D /* View */,
+				D0218AB023C5590F0004931D /* Model */,
 				D0EE456B23C5400C0011B364 /* AppDelegate.swift */,
 				D0EE456D23C5400C0011B364 /* SceneDelegate.swift */,
 				D0EE456F23C5400C0011B364 /* ViewController.swift */,
@@ -139,6 +174,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0EE457023C5400C0011B364 /* ViewController.swift in Sources */,
+				D0218AB523C5599D0004931D /* Colors.swift in Sources */,
 				D0EE456C23C5400C0011B364 /* AppDelegate.swift in Sources */,
 				D0EE456E23C5400C0011B364 /* SceneDelegate.swift in Sources */,
 			);
