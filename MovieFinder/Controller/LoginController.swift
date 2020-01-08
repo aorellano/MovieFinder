@@ -8,13 +8,21 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class LoginController: UIViewController {
+    let loginView = LoginView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-
+    
+    override func loadView() {
+        view = loginView
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
+    }
+    
 }
 

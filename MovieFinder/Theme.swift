@@ -16,3 +16,7 @@ extension UIColor {
     static let titleTextColor = UIColor.white
     static let secondaryTextColor = UIColor(red: 131/255, green: 131/255, blue: 131/255, alpha: 1.0)
 }
+
+extension UIFont {
+    static let titleFont = UIFont(name: "HelveticaNeue-Bold", size: 40)
+}
