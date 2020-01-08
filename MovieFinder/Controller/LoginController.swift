@@ -24,5 +24,8 @@ class LoginController: UIViewController {
         navigationController?.navigationBar.isHidden = true
     }
     
+    @objc func signUpButtonPressed() {
+        print("Sign up button was pressed")
+    }
 }
 

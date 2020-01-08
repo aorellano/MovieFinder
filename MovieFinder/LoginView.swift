@@ -29,10 +29,14 @@ class LoginView: UIView {
         .underlineStyle: NSUnderlineStyle.single.rawValue
         ]
         let attributedString = NSMutableAttributedString(string: "Sign up", attributes: stringAttributes)
+        
         let button = UIButton()
         button.setAttributedTitle(attributedString, for: .normal)
         button.backgroundColor = UIColor.backgroundColor
         button.translatesAutoresizingMaskIntoConstraints = false
+        
+                
+        button.addTarget(self, action: #selector(LoginController.signUpButtonPressed) , for: .touchUpInside)
         return button
     }()
     
