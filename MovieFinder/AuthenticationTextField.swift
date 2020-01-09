@@ -21,6 +21,7 @@ class AuthenticationTextField: UITextField {
         self.layer.borderColor = UIColor.accentColor.cgColor
         self.layer.borderWidth = 1
         self.layer.cornerRadius = 5
+        self.attributedPlaceholder = NSAttributedString(string: "", attributes: [NSAttributedString.Key.foregroundColor: UIColor.secondaryTextColor])
         self.translatesAutoresizingMaskIntoConstraints = false
         self.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }

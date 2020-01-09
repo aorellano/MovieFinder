@@ -44,10 +44,11 @@ class LoginView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = UIColor.backgroundColor
+        backgroundColor = UIColor.backgroundColor
         
         placeLoginHeader()
-        setupLoginTextFields()
+        placeEmailTextField()
+        placePasswordTextField()
         placeLoginButton()
         placeSignUpButton()
     }
@@ -55,31 +56,24 @@ class LoginView: UIView {
     func placeLoginHeader() {
         addSubview(loginHeader)
         
-        loginHeader.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 35).isActive = true
-        loginHeader.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-    }
-    
-    
-    func setupLoginTextFields() {
-        placeEmailTextField()
-        placePasswordTextField()
+        loginHeader.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 35).isActive = true
+        loginHeader.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
     }
     
     func placeEmailTextField() {
         addSubview(emailTextField)
         emailTextField.attributedPlaceholder = NSAttributedString(string: " Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.secondaryTextColor])
         emailTextField.topAnchor.constraint(equalTo: loginHeader.bottomAnchor, constant: 150).isActive = true
-        emailTextField.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 50).isActive = true
-        emailTextField.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -50).isActive = true
-        
+        emailTextField.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 50).isActive = true
+        emailTextField.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -50).isActive = true
     }
     
     func placePasswordTextField() {
         addSubview(passwordTextField)
         passwordTextField.attributedPlaceholder = NSAttributedString(string: " Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.secondaryTextColor])
-        passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 30).isActive = true
-        passwordTextField.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 50).isActive = true
-        passwordTextField.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -50).isActive = true
+        passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 20).isActive = true
+        passwordTextField.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor).isActive = true
+        passwordTextField.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor).isActive = true
         
     }
     
@@ -93,7 +87,7 @@ class LoginView: UIView {
     func placeSignUpButton() {
         addSubview(signUpButton)
         signUpButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 15).isActive = true
-        signUpButton.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        signUpButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
     }
     
     required init?(coder: NSCoder) {
