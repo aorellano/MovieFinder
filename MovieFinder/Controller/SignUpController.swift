@@ -1,15 +1,15 @@
 //
-//  ViewController.swift
+//  SignUpController.swift
 //  MovieFinder
 //
-//  Created by Alexis Orellano on 1/7/20.
+//  Created by Alexis Orellano on 1/8/20.
 //  Copyright © 2020 Alexis Orellano. All rights reserved.
 //
 
 import UIKit
 
-class LoginController: UIViewController {
-    let loginView = LoginView()
+class SignUpController: UIViewController {
+    let signUpView = SignUpView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,19 +17,15 @@ class LoginController: UIViewController {
     }
     
     override func loadView() {
-        view = loginView
+        view = signUpView
     }
     
     override func viewDidAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
     }
     
-    @objc func signUpButtonPressed() {
-        print("Sign up button was pressed")
-        
-        let signUpVC = SignUpController()
-        
-        navigationController?.pushViewController(signUpVC, animated: true)
+    @objc func loginButtonPressed() {
+        navigationController?.popToRootViewController(animated: true)
     }
+    
 }
-
