@@ -46,21 +46,21 @@ class LoginView: UIView {
         
         backgroundColor = UIColor.backgroundColor
         
-        placeLoginHeader()
-        placeEmailTextField()
-        placePasswordTextField()
-        placeLoginButton()
-        placeSignUpButton()
+        setupLoginHeader()
+        setupEmailTextField()
+        setupPasswordTextField()
+        setupLoginButton()
+        setupSignUpButton()
     }
     
-    func placeLoginHeader() {
+    func setupLoginHeader() {
         addSubview(loginHeader)
         
         loginHeader.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 35).isActive = true
         loginHeader.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
     }
     
-    func placeEmailTextField() {
+    func setupEmailTextField() {
         addSubview(emailTextField)
         emailTextField.attributedPlaceholder = NSAttributedString(string: " Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.secondaryTextColor])
         emailTextField.topAnchor.constraint(equalTo: loginHeader.bottomAnchor, constant: 150).isActive = true
@@ -68,7 +68,7 @@ class LoginView: UIView {
         emailTextField.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -50).isActive = true
     }
     
-    func placePasswordTextField() {
+    func setupPasswordTextField() {
         addSubview(passwordTextField)
         passwordTextField.attributedPlaceholder = NSAttributedString(string: " Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.secondaryTextColor])
         passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 20).isActive = true
@@ -77,18 +77,24 @@ class LoginView: UIView {
         
     }
     
-    func placeLoginButton() {
+    func setupLoginButton() {
         addSubview(loginButton)
         loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 50).isActive = true
         loginButton.leadingAnchor.constraint(equalTo: passwordTextField.leadingAnchor).isActive = true
         loginButton.trailingAnchor.constraint(equalTo: passwordTextField.trailingAnchor).isActive = true
     }
     
-    func placeSignUpButton() {
+    func setupSignUpButton() {
         addSubview(signUpButton)
         signUpButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 15).isActive = true
         signUpButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        
+        
     }
+    
+
+    
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

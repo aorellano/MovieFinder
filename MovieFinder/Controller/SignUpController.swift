@@ -13,7 +13,7 @@ class SignUpController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
     }
     
     override func loadView() {
@@ -22,6 +22,10 @@ class SignUpController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
+    }
+    
+    @objc func signUpButtonPressed() {
+        print("Hello there")
     }
     
     @objc func loginButtonPressed() {
