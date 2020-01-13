@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SignUpController: UIViewController {
     let signUpView = SignUpView()
@@ -14,22 +15,21 @@ class SignUpController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = UIColor.backgroundColor
+        
+        if Auth.auth().currentUser?.uid == nil {
+            perform(#selector(handleLogout), with: nil, afterDelay: 0)
+        }
+        
     }
     
-    override func loadView() {
-        view = signUpView
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        navigationController?.navigationBar.isHidden = true
-    }
-    
-    @objc func signUpButtonPressed() {
-        print("Hello there")
-    }
-    
-    @objc func loginButtonPressed() {
-        navigationController?.popToRootViewController(animated: true)
+    @objc func handleLogout() {
+        do {
+            try Auth.auth().signOut()
+        } catch let logoutError {
+            print(logoutError)
+        }
     }
     
 }
+

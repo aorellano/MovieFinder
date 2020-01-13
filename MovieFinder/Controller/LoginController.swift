@@ -41,42 +41,11 @@ class LoginController: UIViewController {
         button.layer.masksToBounds = true
         button.translatesAutoresizingMaskIntoConstraints = false
         
-        button.addTarget(self, action: #selector(handleRegister), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleLoginRegister), for: .touchUpInside)
         return button
     }()
     
-    @objc func handleRegister() {
-        guard let name = nameTextField.text, let email = emailTextField.text, let password = passwordTextField.text else {
-            print("Form is not valid")
-            return
-        }
-        
-        Auth.auth().createUser(withEmail: email, password: password, completion: { (currentUser, error) in
-            
-            if error != nil {
-                print(error)
-                return
-            }
-            
-            guard let uid = currentUser?.user.uid else {
-                return
-            }
-            
-            let ref = Database.database().reference(fromURL: "https://moviefinder-edef6.firebaseio.com/")
-            let usersReference = ref.child("users").child(uid)
-            let values = ["name": name, "email": email]
-            usersReference.updateChildValues(values, withCompletionBlock: { (error, ref) in
-                if error != nil {
-                    print(error)
-                    return
-                }
-                
-                print("Saved user successfully into Firebase db")
-                
-            })
-        })
-        print(123123)
-    }
+
     
     let nameTextField: UITextField = {
         let textField = UITextField()
@@ -148,6 +117,66 @@ class LoginController: UIViewController {
         passwordTextFieldHeightAnchor = passwordTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? 1/2 : 1/3)
         
         passwordTextFieldHeightAnchor?.isActive = true
+    }
+    
+    @objc func handleLoginRegister() {
+        if loginRegisterSegmentedControl.selectedSegmentIndex == 0 {
+            handleLogin()
+        } else {
+            handleRegister()
+        }
+    }
+    
+    func handleLogin() {
+        print("Hello")
+        guard let email = emailTextField.text, let password = passwordTextField.text else {
+            print("Form is not valid")
+            return
+        }
+            
+        Auth.auth().signIn(withEmail: email, password: password, completion: { (currentUser, error) in
+                    
+            if error != nil {
+                print(error)
+            }
+            let signUpVC = SignUpController()
+            self.navigationController?.pushViewController(signUpVC, animated: true)
+        })
+        
+    }
+    
+    @objc func handleRegister() {
+        guard let name = nameTextField.text, let email = emailTextField.text, let password = passwordTextField.text else {
+            print("Form is not valid")
+            return
+        }
+        
+        Auth.auth().createUser(withEmail: email, password: password, completion: { (currentUser, error) in
+            
+            if error != nil {
+                print(error as Any)
+                return
+            }
+            
+            guard let uid = currentUser?.user.uid else {
+                return
+            }
+            
+            let ref = Database.database().reference(fromURL: "https://moviefinder-edef6.firebaseio.com/")
+            let usersReference = ref.child("users").child(uid)
+            let values = ["name": name, "email": email]
+            usersReference.updateChildValues(values, withCompletionBlock: { (error, ref) in
+                if error != nil {
+                    print(error as Any)
+                    return
+                }
+                
+                let signUpVC = SignUpController()
+                self.navigationController?.pushViewController(signUpVC, animated: true)
+                
+            })
+        })
+        print(123123)
     }
 
     override func viewDidLoad() {
