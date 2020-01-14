@@ -139,8 +139,8 @@ class LoginController: UIViewController {
             if error != nil {
                 print(error)
             }
-            let signUpVC = SignUpController()
-            self.navigationController?.pushViewController(signUpVC, animated: true)
+            let homeVC = HomeController()
+            self.navigationController?.pushViewController(homeVC, animated: true)
         })
         
     }
@@ -171,8 +171,8 @@ class LoginController: UIViewController {
                     return
                 }
                 
-                let signUpVC = SignUpController()
-                self.navigationController?.pushViewController(signUpVC, animated: true)
+                let homeVC = HomeController()
+                self.navigationController?.pushViewController(homeVC, animated: true)
                 
             })
         })
@@ -274,9 +274,8 @@ class LoginController: UIViewController {
     @objc func signUpButtonPressed() {
         print("Sign up button was pressed")
         
-        let signUpVC = SignUpController()
-        
-        navigationController?.pushViewController(signUpVC, animated: true)
+        let homeVC = HomeController()
+        navigationController?.pushViewController(homeVC, animated: true)
     }
 }
 
