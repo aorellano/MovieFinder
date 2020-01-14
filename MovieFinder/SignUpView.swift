@@ -37,7 +37,7 @@ class SignUpView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         
                 
-        button.addTarget(self, action: #selector(SignUpController.loginButtonPressed) , for: .touchUpInside)
+
         return button
     }()
     
@@ -103,7 +103,7 @@ class SignUpView: UIView {
     }
     
     func addSignUpButtonAction() {
-        signUpButton.addTarget(self, action: #selector(SignUpController.signUpButtonPressed), for: .touchUpInside)
+
     }
     
     required init?(coder: NSCoder) {
