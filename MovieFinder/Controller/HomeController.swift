@@ -12,13 +12,14 @@ import Firebase
 class HomeController: UIViewController {
     let signUpView = SignUpView()
     
-    let accountNameView: UIView = {
-        let view = UIView()
-        view.layer.cornerRadius = 20
+    let accountNameButton: UIButton = {
+        let button = UIButton()
+        button.layer.cornerRadius = 20
         
-        view.backgroundColor = .white
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+        button.backgroundColor = .white
+        button.addTarget(self, action: #selector(accountNameButtonPressed), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
     let accountNameLabel: UILabel = {
@@ -32,7 +33,7 @@ class HomeController: UIViewController {
         
         view.backgroundColor = UIColor.backgroundColor
         
-        setupAccountNameView()
+        setupAccountNameButton()
         checkIfUserIsLoggedIn()
     }
     
@@ -59,19 +60,25 @@ class HomeController: UIViewController {
         }
     }
     
-    func setupAccountNameView() {
-        view.addSubview(accountNameView)
-        accountNameView.addSubview(accountNameLabel)
+    func setupAccountNameButton() {
+        view.addSubview(accountNameButton)
+        accountNameButton.addSubview(accountNameLabel)
         
         
-        accountNameView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
-        accountNameView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
-        accountNameView.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        accountNameView.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        accountNameButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
+        accountNameButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
+        accountNameButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        accountNameButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
         
-        accountNameLabel.centerXAnchor.constraint(equalTo: accountNameView.centerXAnchor).isActive = true
-        accountNameLabel.centerYAnchor.constraint(equalTo: accountNameView.centerYAnchor).isActive = true
+        accountNameLabel.centerXAnchor.constraint(equalTo: accountNameButton.centerXAnchor).isActive = true
+        accountNameLabel.centerYAnchor.constraint(equalTo: accountNameButton.centerYAnchor).isActive = true
         
+    }
+    
+    @objc func accountNameButtonPressed() {
+        let settingsVC = SettingsController()
+        
+        navigationController?.pushViewController(settingsVC, animated: true)
     }
     
     
@@ -81,6 +88,10 @@ class HomeController: UIViewController {
         } catch let logoutError {
             print(logoutError)
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
     }
     
 }
