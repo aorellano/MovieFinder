@@ -267,8 +267,10 @@ class LoginController: UIViewController {
         return .lightContent
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        navigationController?.navigationBar.isHidden = true
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     @objc func signUpButtonPressed() {

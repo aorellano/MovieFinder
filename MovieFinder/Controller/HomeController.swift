@@ -31,10 +31,11 @@ class HomeController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        checkIfUserIsLoggedIn()
         view.backgroundColor = UIColor.backgroundColor
         
         setupAccountNameButton()
-        checkIfUserIsLoggedIn()
+        
     }
     
     func checkIfUserIsLoggedIn() {
@@ -88,10 +89,15 @@ class HomeController: UIViewController {
         } catch let logoutError {
             print(logoutError)
         }
+        
+        let loginController = LoginController()
+        navigationController?.pushViewController(loginController, animated: false)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        navigationController?.navigationBar.isHidden = true
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
 }
