@@ -12,6 +12,15 @@ import Firebase
 class HomeController: UIViewController {
     let signUpView = SignUpView()
     
+    let movieCollectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+        collectionView.backgroundColor = UIColor.backgroundColor
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        return collectionView
+    }()
+
+    
     let accountNameButton: UIButton = {
         let button = UIButton()
         button.layer.cornerRadius = 20
@@ -31,10 +40,15 @@ class HomeController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        checkIfUserIsLoggedIn()
         view.backgroundColor = UIColor.backgroundColor
+        movieCollectionView.delegate = self
+        movieCollectionView.dataSource = self
+        
+       
+        checkIfUserIsLoggedIn()
         
         setupAccountNameButton()
+        setupCollectionView()
         
     }
     
@@ -76,6 +90,15 @@ class HomeController: UIViewController {
         
     }
     
+    func setupCollectionView() {
+        view.addSubview(movieCollectionView)
+        
+        movieCollectionView.topAnchor.constraint(equalTo: accountNameButton.bottomAnchor, constant: 40).isActive = true
+        movieCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        movieCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        movieCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+    }
+    
     @objc func accountNameButtonPressed() {
         let settingsVC = SettingsController()
         
@@ -99,6 +122,29 @@ class HomeController: UIViewController {
         
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
+    
+}
+
+extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: movieCollectionView.bounds.width/2.3, height: movieCollectionView.bounds.height/3)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 8
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = movieCollectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        cell.backgroundColor = UIColor.tintColor
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+    }
+    
     
 }
 
