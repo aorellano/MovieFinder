@@ -11,6 +11,7 @@ import Firebase
 
 class HomeController: UIViewController {
     let signUpView = SignUpView()
+    var stringAttributes: [NSAttributedString.Key: Any]!
     
     let movieCollectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
@@ -19,8 +20,71 @@ class HomeController: UIViewController {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
-
     
+    let searchField: UITextField = {
+        let search = UITextField()
+        search.borderStyle = .roundedRect
+        search.placeholder = "Search"
+        search.backgroundColor = UIColor.accentColor
+        search.translatesAutoresizingMaskIntoConstraints = false
+        return search
+    }()
+    
+    let movieLocationView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.backgroundColor
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    let movieLocationSymbol: UIImageView = {
+        let image = UIImage(named: "LocationSymbol")
+        let symbol = UIImageView(image: image)
+        symbol.translatesAutoresizingMaskIntoConstraints = false
+        return symbol
+    }()
+    
+    let movieLocationLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Current Location"
+        label.font = UIFont.locationTextFont
+        label.textColor = UIColor.secondaryTextColor
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let movieShowingsView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    let movieSegmentedControl: UISegmentedControl = {
+        let control = UISegmentedControl(items: ["Now Showing", "Upcoming"])
+        control.tintColor = .clear
+        control.selectedSegmentIndex == 0
+        control.addTarget(self, action: #selector(handleSegmentedControl), for: .valueChanged)
+        control.translatesAutoresizingMaskIntoConstraints = false
+        return control
+    }()
+    
+    let nowPlayingButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Now Playing", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    let upcomingButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Upcoming", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
     let accountNameButton: UIButton = {
         let button = UIButton()
         button.layer.cornerRadius = 20
@@ -48,7 +112,11 @@ class HomeController: UIViewController {
         checkIfUserIsLoggedIn()
         
         setupAccountNameButton()
+        setupSearchField()
+        setupMovieLocationView()
+        setupMovieShowingsView()
         setupCollectionView()
+        
         
     }
     
@@ -80,7 +148,7 @@ class HomeController: UIViewController {
         accountNameButton.addSubview(accountNameLabel)
         
         
-        accountNameButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
+        accountNameButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8).isActive = true
         accountNameButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
         accountNameButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         accountNameButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
@@ -90,13 +158,75 @@ class HomeController: UIViewController {
         
     }
     
+    func setupSearchField() {
+        view.addSubview(searchField)
+        
+        searchField.topAnchor.constraint(equalTo: accountNameButton.bottomAnchor, constant: 10).isActive = true
+        searchField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        searchField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
+    }
+    
+    func setupMovieLocationView() {
+        view.addSubview(movieLocationView)
+        movieLocationView.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        movieLocationView.leadingAnchor.constraint(equalTo: searchField.leadingAnchor).isActive = true
+        movieLocationView.trailingAnchor.constraint(equalTo: searchField.trailingAnchor).isActive = true
+        movieLocationView.topAnchor.constraint(equalTo: searchField.bottomAnchor, constant: 5).isActive = true
+        
+        movieLocationView.addSubview(movieLocationSymbol)
+        movieLocationSymbol.centerYAnchor.constraint(equalTo: movieLocationView.centerYAnchor).isActive = true
+        movieLocationSymbol.leadingAnchor.constraint(equalTo: movieLocationView.leadingAnchor, constant: 2).isActive = true
+        movieLocationSymbol.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        movieLocationSymbol.widthAnchor.constraint(equalToConstant: 25).isActive = true
+        
+        movieLocationView.addSubview(movieLocationLabel)
+        movieLocationLabel.centerYAnchor.constraint(equalTo: movieLocationView.centerYAnchor).isActive = true
+        movieLocationLabel.leadingAnchor.constraint(equalTo: movieLocationSymbol.trailingAnchor, constant: 10).isActive = true
+    }
+    
+    func setupMovieShowingsView() {
+        view.addSubview(movieSegmentedControl)
+        
+        movieSegmentedControl.removeBorders()
+        
+        stringAttributes = [
+                                  .font: UIFont.boldSystemFont(ofSize: 17),
+                                  .foregroundColor: UIColor.white
+                              ]
+        movieSegmentedControl.setTitleTextAttributes(stringAttributes, for: .normal)
+        
+        movieSegmentedControl.topAnchor.constraint(equalTo: movieLocationView.bottomAnchor).isActive = true
+        movieSegmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        movieSegmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        movieSegmentedControl.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
+//        movieShowingsView.addSubview(nowPlayingButton)
+//        
+//        nowPlayingButton.centerYAnchor.constraint(equalTo: movieShowingsView.centerYAnchor).isActive = true
+//        nowPlayingButton.leadingAnchor.constraint(equalTo: movieShowingsView.leadingAnchor, constant: 25).isActive = true
+//        
+//        
+//        movieShowingsView.addSubview(upcomingButton)
+//        upcomingButton.centerYAnchor.constraint(equalTo: movieShowingsView.centerYAnchor).isActive = true
+//        upcomingButton.trailingAnchor.constraint(equalTo: movieShowingsView.trailingAnchor, constant: -25).isActive = true
+    }
+    
     func setupCollectionView() {
         view.addSubview(movieCollectionView)
         
-        movieCollectionView.topAnchor.constraint(equalTo: accountNameButton.bottomAnchor, constant: 40).isActive = true
+        movieCollectionView.topAnchor.constraint(equalTo: movieSegmentedControl.bottomAnchor).isActive = true
         movieCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         movieCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         movieCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+    }
+    
+    @objc func handleSegmentedControl() {
+        stringAttributes = [
+            .font: UIFont.boldSystemFont(ofSize: 25),
+            .foregroundColor: UIColor.highlightColor
+        ]
+        
+        movieSegmentedControl.setTitleTextAttributes(stringAttributes, for: .selected)
     }
     
     @objc func accountNameButtonPressed() {
@@ -144,7 +274,36 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
     }
-    
-    
+}
+
+extension UISegmentedControl {
+    func removeBorders(andBackground:Bool=false) {
+        setBackgroundImage(imageWithColor(color: backgroundColor ?? .clear), for: .normal, barMetrics: .default)
+        setBackgroundImage(imageWithColor(color: tintColor!), for: .selected, barMetrics: .default)
+        setDividerImage(imageWithColor(color: UIColor.clear), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
+
+        _ = self.subviews.compactMap {
+            if ($0.frame.width>0) {
+                $0.layer.cornerRadius = 8
+                $0.layer.borderColor = UIColor.clear.cgColor
+                $0.clipsToBounds = true
+                $0.layer.borderWidth = andBackground ? 1.0 : 0.0
+                $0.layer.borderColor = andBackground ? tintColor?.cgColor : UIColor.clear.cgColor
+                andBackground ? $0.layer.backgroundColor = UIColor.clear.cgColor : nil
+            }
+        }
+    }
+
+    // create a 1x1 image with this color
+    private func imageWithColor(color: UIColor) -> UIImage {
+        let rect = CGRect(x: 0.0, y: 0.0, width:  1.0, height: 1.0)
+        UIGraphicsBeginImageContext(rect.size)
+        let context = UIGraphicsGetCurrentContext()
+        context!.setFillColor(color.cgColor);
+        context!.fill(rect);
+        let image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        return image!
+    }
 }
 

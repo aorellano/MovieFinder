@@ -14,9 +14,10 @@ extension UIColor {
     static let tintColor = UIColor(red: 106/255, green: 88/255, blue: 255/255, alpha: 1.0)
     static let highlightColor = UIColor(red: 255/255, green: 185/255, blue: 0/255, alpha: 1.0)
     static let titleTextColor = UIColor.white
-    static let secondaryTextColor = UIColor(red: 131/255, green: 131/255, blue: 131/255, alpha: 1.0)
+    static let secondaryTextColor = UIColor(red: 86/255, green: 89/255, blue: 101/255, alpha: 1.0)
 }
 
 extension UIFont {
     static let titleFont = UIFont(name: "HelveticaNeue-Bold", size: 40)
+    static let locationTextFont = UIFont(name: "HelveticaNeue", size: 12)
 }
