@@ -169,9 +169,9 @@ class HomeController: UIViewController {
     func setupMovieLocationView() {
         view.addSubview(movieLocationView)
         movieLocationView.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        movieLocationView.leadingAnchor.constraint(equalTo: searchField.leadingAnchor).isActive = true
-        movieLocationView.trailingAnchor.constraint(equalTo: searchField.trailingAnchor).isActive = true
-        movieLocationView.topAnchor.constraint(equalTo: searchField.bottomAnchor, constant: 5).isActive = true
+        movieLocationView.leadingAnchor.constraint(equalTo: searchField.leadingAnchor, constant: 5).isActive = true
+        movieLocationView.trailingAnchor.constraint(equalTo: searchField.trailingAnchor, constant: -5).isActive = true
+        movieLocationView.topAnchor.constraint(equalTo: searchField.bottomAnchor, constant: 10).isActive = true
         
         movieLocationView.addSubview(movieLocationSymbol)
         movieLocationSymbol.centerYAnchor.constraint(equalTo: movieLocationView.centerYAnchor).isActive = true
@@ -195,26 +195,16 @@ class HomeController: UIViewController {
                               ]
         movieSegmentedControl.setTitleTextAttributes(stringAttributes, for: .normal)
         
-        movieSegmentedControl.topAnchor.constraint(equalTo: movieLocationView.bottomAnchor).isActive = true
+        movieSegmentedControl.topAnchor.constraint(equalTo: movieLocationView.bottomAnchor, constant: 8).isActive = true
         movieSegmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
         movieSegmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         movieSegmentedControl.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        
-//        movieShowingsView.addSubview(nowPlayingButton)
-//        
-//        nowPlayingButton.centerYAnchor.constraint(equalTo: movieShowingsView.centerYAnchor).isActive = true
-//        nowPlayingButton.leadingAnchor.constraint(equalTo: movieShowingsView.leadingAnchor, constant: 25).isActive = true
-//        
-//        
-//        movieShowingsView.addSubview(upcomingButton)
-//        upcomingButton.centerYAnchor.constraint(equalTo: movieShowingsView.centerYAnchor).isActive = true
-//        upcomingButton.trailingAnchor.constraint(equalTo: movieShowingsView.trailingAnchor, constant: -25).isActive = true
     }
     
     func setupCollectionView() {
         view.addSubview(movieCollectionView)
         
-        movieCollectionView.topAnchor.constraint(equalTo: movieSegmentedControl.bottomAnchor).isActive = true
+        movieCollectionView.topAnchor.constraint(equalTo: movieSegmentedControl.bottomAnchor, constant: 10).isActive = true
         movieCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         movieCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         movieCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
