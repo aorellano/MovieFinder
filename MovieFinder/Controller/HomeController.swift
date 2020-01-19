@@ -21,13 +21,36 @@ class HomeController: UIViewController {
         return collectionView
     }()
     
+    let searchFieldView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = 10
+        view.backgroundColor = UIColor.backgroundColor
+        return view
+    }()
+    
     let searchField: UITextField = {
         let search = UITextField()
-        search.borderStyle = .roundedRect
         search.placeholder = "Search"
-        search.backgroundColor = UIColor.accentColor
+        search.backgroundColor = UIColor.backgroundColor
+        search.textColor = .white
+        
+        let styleAttributes: [NSAttributedString.Key : Any] = [
+            .foregroundColor: UIColor.secondaryTextColor
+        ]
+        
+        let attributedString = NSAttributedString(string: "Search", attributes: styleAttributes)
+        search.attributedPlaceholder = attributedString
+        
         search.translatesAutoresizingMaskIntoConstraints = false
         return search
+    }()
+    
+    let searchFieldUnderline: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.secondaryTextColor
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     let movieLocationView: UIView = {
@@ -112,7 +135,7 @@ class HomeController: UIViewController {
         checkIfUserIsLoggedIn()
         
         setupAccountNameButton()
-        setupSearchField()
+        setupSearchFieldView()
         setupMovieLocationView()
         setupMovieShowingsView()
         setupCollectionView()
@@ -158,20 +181,37 @@ class HomeController: UIViewController {
         
     }
     
-    func setupSearchField() {
-        view.addSubview(searchField)
+    func setupSearchFieldView() {
+        view.addSubview(searchFieldView)
         
-        searchField.topAnchor.constraint(equalTo: accountNameButton.bottomAnchor, constant: 10).isActive = true
-        searchField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-        searchField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
+        
+        
+        searchFieldView.topAnchor.constraint(equalTo: accountNameButton.bottomAnchor, constant: 10).isActive = true
+        searchFieldView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25).isActive = true
+        searchFieldView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25).isActive = true
+        searchFieldView.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        searchFieldView.addSubview(searchFieldUnderline)
+        searchFieldView.addSubview(searchField)
+        
+        searchFieldUnderline.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        searchFieldUnderline.bottomAnchor.constraint(equalTo: searchFieldView.bottomAnchor, constant: -1).isActive = true
+        searchFieldUnderline.leadingAnchor.constraint(equalTo: searchFieldView.leadingAnchor).isActive = true
+        searchFieldUnderline.widthAnchor.constraint(equalTo: searchFieldView.widthAnchor).isActive = true
+        
+        searchField.topAnchor.constraint(equalTo: searchFieldView.topAnchor).isActive = true
+        searchField.bottomAnchor.constraint(equalTo: searchFieldUnderline.topAnchor).isActive = true
+        searchField.leadingAnchor.constraint(equalTo: searchFieldView.leadingAnchor, constant: 5).isActive = true
+        searchField.trailingAnchor.constraint(equalTo: searchFieldView.trailingAnchor).isActive = true
+        
     }
     
     func setupMovieLocationView() {
         view.addSubview(movieLocationView)
         movieLocationView.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        movieLocationView.leadingAnchor.constraint(equalTo: searchField.leadingAnchor, constant: 5).isActive = true
-        movieLocationView.trailingAnchor.constraint(equalTo: searchField.trailingAnchor, constant: -5).isActive = true
-        movieLocationView.topAnchor.constraint(equalTo: searchField.bottomAnchor, constant: 10).isActive = true
+        movieLocationView.leadingAnchor.constraint(equalTo: searchFieldView.leadingAnchor).isActive = true
+        movieLocationView.trailingAnchor.constraint(equalTo: searchFieldView.trailingAnchor).isActive = true
+        movieLocationView.topAnchor.constraint(equalTo: searchFieldView.bottomAnchor, constant: 10).isActive = true
         
         movieLocationView.addSubview(movieLocationSymbol)
         movieLocationSymbol.centerYAnchor.constraint(equalTo: movieLocationView.centerYAnchor).isActive = true
@@ -296,4 +336,3 @@ extension UISegmentedControl {
         return image!
     }
 }
-
