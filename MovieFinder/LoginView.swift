@@ -22,7 +22,7 @@ class LoginView: UIView {
     let loginRegisterSegmentedControl: UISegmentedControl = {
         let segmentedControl = UISegmentedControl(items: ["Login", "Sign Up"])
         segmentedControl.backgroundColor = UIColor.accentColor
-//        segmentedControl.addTarget(self, action: #selector(handleLoginRegisterChange), for: .valueChanged)
+        segmentedControl.addTarget(self, action: #selector(handleLoginRegisterChange), for: .valueChanged)
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         return segmentedControl
     }()
@@ -36,8 +36,7 @@ class LoginView: UIView {
         button.layer.cornerRadius = 10
         button.layer.masksToBounds = true
         button.translatesAutoresizingMaskIntoConstraints = false
-            
-    //        button.addTarget(self, action: #selector(handleLoginRegister), for: .touchUpInside)
+
         return button
     }()
     
@@ -86,6 +85,30 @@ class LoginView: UIView {
         loginRegisterButton.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
         loginRegisterButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
+    
+    @objc func handleLoginRegisterChange() {
+        let title = loginRegisterSegmentedControl.titleForSegment(at: (loginRegisterSegmentedControl.selectedSegmentIndex))
+        loginRegisterButton.setTitle(title, for: .normal)
+        headerLabel.text = title
+
+        inputsContainerViewHeightAnchor?.constant = loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? 120 : 180
+
+        inputsContainerView.nameTextFieldHeightAnchor?.isActive = false
+        inputsContainerView.nameTextFieldHeightAnchor = inputsContainerView.nameTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? 0 : 1/3)
+        inputsContainerView.nameTextFieldHeightAnchor?.isActive = true
+
+        inputsContainerView.emailTextFieldHeightAnchor?.isActive = false
+        inputsContainerView.emailTextFieldHeightAnchor = inputsContainerView.emailTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? 1/2 : 1/3)
+
+        inputsContainerView.emailTextFieldHeightAnchor?.isActive = true
+
+        inputsContainerView.passwordTextFieldHeightAnchor?.isActive = false
+        inputsContainerView.passwordTextFieldHeightAnchor = inputsContainerView.passwordTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? 1/2 : 1/3)
+
+        inputsContainerView.passwordTextFieldHeightAnchor?.isActive = true
+    }
+    
+
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

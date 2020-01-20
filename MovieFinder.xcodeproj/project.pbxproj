@@ -14,7 +14,6 @@
 		D0218ABE23C59BBB0004931D /* AuthenticationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0218ABD23C59BBB0004931D /* AuthenticationButton.swift */; };
 		D0218AC023C5AC1D0004931D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0218ABF23C5AC1D0004931D /* SceneDelegate.swift */; };
 		D0218AC223C6A1770004931D /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0218AC123C6A1770004931D /* HomeController.swift */; };
-		D0218AC823C6A2270004931D /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0218AC723C6A2270004931D /* SignUpView.swift */; };
 		D0218ACA23C7E85A0004931D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0218AC923C7E85A0004931D /* GoogleService-Info.plist */; };
 		D028AD0823CD893D009760F6 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D028AD0723CD893D009760F6 /* SettingsController.swift */; };
 		D0612AA123D65E63000A568A /* LoginInputsContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0612AA023D65E63000A568A /* LoginInputsContainerView.swift */; };
@@ -33,7 +32,6 @@
 		D0218ABD23C59BBB0004931D /* AuthenticationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationButton.swift; sourceTree = "<group>"; };
 		D0218ABF23C5AC1D0004931D /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D0218AC123C6A1770004931D /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
-		D0218AC723C6A2270004931D /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		D0218AC923C7E85A0004931D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D028AD0723CD893D009760F6 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		D0612AA023D65E63000A568A /* LoginInputsContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputsContainerView.swift; sourceTree = "<group>"; };
@@ -86,10 +84,9 @@
 			isa = PBXGroup;
 			children = (
 				D0218AB623C563E90004931D /* LoginView.swift */,
-				D0218AC723C6A2270004931D /* SignUpView.swift */,
+				D0612AA023D65E63000A568A /* LoginInputsContainerView.swift */,
 				D0218AB923C570ED0004931D /* AuthenticationTextField.swift */,
 				D0218ABD23C59BBB0004931D /* AuthenticationButton.swift */,
-				D0612AA023D65E63000A568A /* LoginInputsContainerView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -271,7 +268,6 @@
 				D0EE456C23C5400C0011B364 /* AppDelegate.swift in Sources */,
 				D028AD0823CD893D009760F6 /* SettingsController.swift in Sources */,
 				D0218AB723C563E90004931D /* LoginView.swift in Sources */,
-				D0218AC823C6A2270004931D /* SignUpView.swift in Sources */,
 				D0218ABA23C570ED0004931D /* AuthenticationTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

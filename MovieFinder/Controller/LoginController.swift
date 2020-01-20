@@ -12,66 +12,69 @@ import Firebase
 class LoginController: UIViewController {
     let loginView = LoginView()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        addButtonTargets()
+    }
+    
+    func addButtonTargets() {
+        loginView.loginRegisterButton.addTarget(self, action: #selector(handleLoginRegister), for: .touchUpInside)
+    }
+    
+    @objc func handleLoginRegister() {
+        if loginView.loginRegisterSegmentedControl.selectedSegmentIndex == 0 {
+            handleLogin()
+        } else {
+            handleRegister()
+        }
+    }
+    
+    func handleLogin() {
+        guard let email = loginView.inputsContainerView.emailTextField.text, let password = loginView.inputsContainerView.passwordTextField.text else {
+            print("Form is not valid")
+            return
+        }
+        Auth.auth().signIn(withEmail: email, password: password, completion: { (currentUser, error) in
+            if error != nil {
+                print(error)
+            }
+            let homeVC = HomeController()
+            self.navigationController?.pushViewController(homeVC, animated: true)
+        })
+    }
+    
+    @objc func handleRegister() {
+        guard let name = loginView.inputsContainerView.nameTextField.text, let email = loginView.inputsContainerView.emailTextField.text, let password = loginView.inputsContainerView.passwordTextField.text else {
+            print("Form is not valid")
+            return
+        }
 
-//    func handleLogin() {
-//        print("Hello")
-//        guard let email = emailTextField.text, let password = passwordTextField.text else {
-//            print("Form is not valid")
-//            return
-//        }
-//            
-//        Auth.auth().signIn(withEmail: email, password: password, completion: { (currentUser, error) in
-//                    
-//            if error != nil {
-//                print(error)
-//            }
-//            let homeVC = HomeController()
-//            self.navigationController?.pushViewController(homeVC, animated: true)
-//        })
-//        
-//    }
-//    
-//    @objc func handleRegister() {
-//        guard let name = nameTextField.text, let email = emailTextField.text, let password = passwordTextField.text else {
-//            print("Form is not valid")
-//            return
-//        }
-//        
-//        Auth.auth().createUser(withEmail: email, password: password, completion: { (currentUser, error) in
-//            
-//            if error != nil {
-//                print(error as Any)
-//                return
-//            }
-//            
-//            guard let uid = currentUser?.user.uid else {
-//                return
-//            }
-//            
-//            let ref = Database.database().reference(fromURL: "https://moviefinder-edef6.firebaseio.com/")
-//            let usersReference = ref.child("users").child(uid)
-//            let values = ["name": name, "email": email]
-//            usersReference.updateChildValues(values, withCompletionBlock: { (error, ref) in
-//                if error != nil {
-//                    print(error as Any)
-//                    return
-//                }
-//                
-//                let homeVC = HomeController()
-//                self.navigationController?.pushViewController(homeVC, animated: true)
-//                
-//            })
-//        })
-//        print(123123)
-//    }
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        view.backgroundColor = UIColor.backgroundColor
-//        setupInputsContainerView()
-//        setupLoginRegisterButton()
-//
-//    }
+        Auth.auth().createUser(withEmail: email, password: password, completion: { (currentUser, error) in
+            if error != nil {
+                print(error as Any)
+                return
+            }
+            
+            guard let uid = currentUser?.user.uid else {
+                return
+            }
+            
+            let ref = Database.database().reference(fromURL: "https://moviefinder-edef6.firebaseio.com/")
+            let usersReference = ref.child("users").child(uid)
+            let values = ["name": name, "email": email]
+            usersReference.updateChildValues(values, withCompletionBlock: { (error, ref) in
+                if error != nil {
+                    print(error as Any)
+                    return
+                }
+                
+                let homeVC = HomeController()
+                self.navigationController?.pushViewController(homeVC, animated: true)
+                
+            })
+        })
+    }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -85,13 +88,6 @@ class LoginController: UIViewController {
     
     override func loadView() {
         view = loginView
-    }
-    
-    @objc func signUpButtonPressed() {
-        print("Sign up button was pressed")
-        
-        let homeVC = HomeController()
-        navigationController?.pushViewController(homeVC, animated: true)
     }
 }
 
