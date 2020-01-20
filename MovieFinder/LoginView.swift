@@ -9,93 +9,84 @@
 import UIKit
 
 class LoginView: UIView {
-    let emailTextField = AuthenticationTextField()
-    let passwordTextField = AuthenticationTextField()
-    let loginButton = AuthenticationButton()
-    
-    var loginHeader: UILabel = {
-        let header = UILabel()
-        header.text = "Login"
-        header.textColor = UIColor.titleTextColor
-        header.font = UIFont.titleFont
-        header.translatesAutoresizingMaskIntoConstraints = false
-        return header
+    var inputsContainerViewHeightAnchor: NSLayoutConstraint?
+    let headerLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Login"
+        label.textColor = UIColor.titleTextColor
+        label.font = UIFont.titleFont
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
     
-    var signUpButton: UIButton = {
-        let stringAttributes: [NSAttributedString.Key: Any] = [
-        .font: UIFont.systemFont(ofSize: 16),
-        .foregroundColor: UIColor.white,
-        .underlineStyle: NSUnderlineStyle.single.rawValue
-        ]
-        let attributedString = NSMutableAttributedString(string: "Sign up", attributes: stringAttributes)
-        
+    let loginRegisterSegmentedControl: UISegmentedControl = {
+        let segmentedControl = UISegmentedControl(items: ["Login", "Sign Up"])
+        segmentedControl.backgroundColor = UIColor.accentColor
+//        segmentedControl.addTarget(self, action: #selector(handleLoginRegisterChange), for: .valueChanged)
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        return segmentedControl
+    }()
+    
+    let inputsContainerView = LoginInputsContainerView()
+    
+    lazy var loginRegisterButton: UIButton = {
         let button = UIButton()
-        button.setAttributedTitle(attributedString, for: .normal)
-        button.backgroundColor = UIColor.backgroundColor
+        button.backgroundColor = UIColor.tintColor
+        button.setTitle("Register", for: .normal)
+        button.layer.cornerRadius = 10
+        button.layer.masksToBounds = true
         button.translatesAutoresizingMaskIntoConstraints = false
-        
-                
-        button.addTarget(self, action: #selector(LoginController.signUpButtonPressed) , for: .touchUpInside)
+            
+    //        button.addTarget(self, action: #selector(handleLoginRegister), for: .touchUpInside)
         return button
     }()
     
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         backgroundColor = UIColor.backgroundColor
         
-        setupLoginHeader()
-        setupEmailTextField()
-        setupPasswordTextField()
-        setupLoginButton()
-        setupSignUpButton()
+        setupHeaderLabel()
+        setupInputsContainerView()
+        setupLoginSegmentedControl()
+        setupLoginRegisterButton()
     }
     
-    func setupLoginHeader() {
-        addSubview(loginHeader)
+    func setupHeaderLabel() {
+        addSubview(headerLabel)
+           
+        headerLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 100).isActive = true
+        headerLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+       }
+    
+    func setupInputsContainerView() {
+        addSubview(inputsContainerView)
+        inputsContainerView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        inputsContainerView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        inputsContainerView.widthAnchor.constraint(equalTo: self.safeAreaLayoutGuide.widthAnchor, constant: -24).isActive = true
         
-        loginHeader.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 35).isActive = true
-        loginHeader.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        inputsContainerViewHeightAnchor = inputsContainerView.heightAnchor.constraint(equalToConstant: 180)
+               
+        inputsContainerViewHeightAnchor?.isActive = true
     }
     
-    func setupEmailTextField() {
-        addSubview(emailTextField)
-        emailTextField.attributedPlaceholder = NSAttributedString(string: " Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.secondaryTextColor])
-        emailTextField.topAnchor.constraint(equalTo: loginHeader.bottomAnchor, constant: 150).isActive = true
-        emailTextField.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 50).isActive = true
-        emailTextField.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -50).isActive = true
-    }
+    func setupLoginSegmentedControl() {
+        addSubview(loginRegisterSegmentedControl)
+           
+        loginRegisterSegmentedControl.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        loginRegisterSegmentedControl.bottomAnchor.constraint(equalTo: inputsContainerView.topAnchor, constant: -20).isActive = true
+        loginRegisterSegmentedControl.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
+        loginRegisterSegmentedControl.heightAnchor.constraint(equalToConstant: 50).isActive = true
+       }
     
-    func setupPasswordTextField() {
-        addSubview(passwordTextField)
-        passwordTextField.attributedPlaceholder = NSAttributedString(string: " Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.secondaryTextColor])
-        passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 20).isActive = true
-        passwordTextField.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor).isActive = true
-        passwordTextField.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor).isActive = true
-        
+    func setupLoginRegisterButton() {
+        addSubview(loginRegisterButton)
+        loginRegisterButton.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        loginRegisterButton.topAnchor.constraint(equalTo: inputsContainerView.bottomAnchor, constant: 20).isActive = true
+        loginRegisterButton.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
+        loginRegisterButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
-    
-    func setupLoginButton() {
-        addSubview(loginButton)
-        loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 50).isActive = true
-        loginButton.leadingAnchor.constraint(equalTo: passwordTextField.leadingAnchor).isActive = true
-        loginButton.trailingAnchor.constraint(equalTo: passwordTextField.trailingAnchor).isActive = true
-    }
-    
-    func setupSignUpButton() {
-        addSubview(signUpButton)
-        signUpButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 15).isActive = true
-        signUpButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        
-        
-    }
-    
 
-    
-    
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
