@@ -17,6 +17,10 @@
 		D0218ACA23C7E85A0004931D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0218AC923C7E85A0004931D /* GoogleService-Info.plist */; };
 		D028AD0823CD893D009760F6 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D028AD0723CD893D009760F6 /* SettingsController.swift */; };
 		D0612AA123D65E63000A568A /* LoginInputsContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0612AA023D65E63000A568A /* LoginInputsContainerView.swift */; };
+		D0612AA323D670F7000A568A /* SearchFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0612AA223D670F7000A568A /* SearchFieldView.swift */; };
+		D0612AA523D67121000A568A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0612AA423D67121000A568A /* HomeView.swift */; };
+		D0612AA723D67803000A568A /* MovieLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0612AA623D67803000A568A /* MovieLocationView.swift */; };
+		D0612AA923D67DDE000A568A /* SegmentedControl+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0612AA823D67DDE000A568A /* SegmentedControl+Extension.swift */; };
 		D0EE456C23C5400C0011B364 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EE456B23C5400C0011B364 /* AppDelegate.swift */; };
 		D0EE457023C5400C0011B364 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EE456F23C5400C0011B364 /* LoginController.swift */; };
 		D0EE457523C540120011B364 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0EE457423C540120011B364 /* Assets.xcassets */; };
@@ -35,6 +39,10 @@
 		D0218AC923C7E85A0004931D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D028AD0723CD893D009760F6 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		D0612AA023D65E63000A568A /* LoginInputsContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputsContainerView.swift; sourceTree = "<group>"; };
+		D0612AA223D670F7000A568A /* SearchFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFieldView.swift; sourceTree = "<group>"; };
+		D0612AA423D67121000A568A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		D0612AA623D67803000A568A /* MovieLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieLocationView.swift; sourceTree = "<group>"; };
+		D0612AA823D67DDE000A568A /* SegmentedControl+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SegmentedControl+Extension.swift"; sourceTree = "<group>"; };
 		D0EE456823C5400C0011B364 /* MovieFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0EE456B23C5400C0011B364 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0EE456F23C5400C0011B364 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -84,9 +92,12 @@
 			isa = PBXGroup;
 			children = (
 				D0218AB623C563E90004931D /* LoginView.swift */,
+				D0612AA423D67121000A568A /* HomeView.swift */,
 				D0612AA023D65E63000A568A /* LoginInputsContainerView.swift */,
 				D0218AB923C570ED0004931D /* AuthenticationTextField.swift */,
 				D0218ABD23C59BBB0004931D /* AuthenticationButton.swift */,
+				D0612AA223D670F7000A568A /* SearchFieldView.swift */,
+				D0612AA623D67803000A568A /* MovieLocationView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -107,6 +118,14 @@
 				D0218AB423C5599D0004931D /* Theme.swift */,
 			);
 			name = Constants;
+			sourceTree = "<group>";
+		};
+		D0612AAA23D67DE7000A568A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D0612AA823D67DDE000A568A /* SegmentedControl+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		D0EE455F23C5400C0011B364 = {
@@ -130,6 +149,7 @@
 		D0EE456A23C5400C0011B364 /* MovieFinder */ = {
 			isa = PBXGroup;
 			children = (
+				D0612AAA23D67DE7000A568A /* Extensions */,
 				D0218AB323C5598A0004931D /* Constants */,
 				D0218AB223C559220004931D /* Controller */,
 				D0218AB123C5591B0004931D /* View */,
@@ -265,10 +285,14 @@
 				D0218AB523C5599D0004931D /* Theme.swift in Sources */,
 				D0218AC223C6A1770004931D /* HomeController.swift in Sources */,
 				D0218ABE23C59BBB0004931D /* AuthenticationButton.swift in Sources */,
+				D0612AA723D67803000A568A /* MovieLocationView.swift in Sources */,
 				D0EE456C23C5400C0011B364 /* AppDelegate.swift in Sources */,
 				D028AD0823CD893D009760F6 /* SettingsController.swift in Sources */,
 				D0218AB723C563E90004931D /* LoginView.swift in Sources */,
+				D0612AA923D67DDE000A568A /* SegmentedControl+Extension.swift in Sources */,
+				D0612AA523D67121000A568A /* HomeView.swift in Sources */,
 				D0218ABA23C570ED0004931D /* AuthenticationTextField.swift in Sources */,
+				D0612AA323D670F7000A568A /* SearchFieldView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
