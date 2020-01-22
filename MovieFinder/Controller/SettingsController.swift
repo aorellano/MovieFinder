@@ -28,20 +28,12 @@ class SettingsController: UITableViewController {
         self.navigationItem.title = "Settings"
         
         navigationController?.navigationBar.largeTitleTextAttributes = titleAttributes
-    
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         navigationController?.setNavigationBarHidden(false, animated: true)
-        
-        
-        
-    
-        
     }
 }
 

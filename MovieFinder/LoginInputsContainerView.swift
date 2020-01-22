@@ -57,7 +57,6 @@ class LoginInputsContainerView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-    
         setupInputsContainerView()
     }
 
@@ -110,7 +109,6 @@ class LoginInputsContainerView: UIView {
         emailSeperatorView.topAnchor.constraint(equalTo: emailTextField.bottomAnchor).isActive = true
         emailSeperatorView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
         emailSeperatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
-        
     }
     
     func placePasswordTextField() {
@@ -118,13 +116,9 @@ class LoginInputsContainerView: UIView {
         passwordTextField.topAnchor.constraint(equalTo: emailSeperatorView.bottomAnchor).isActive = true
         passwordTextField.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
         
-        
         passwordTextFieldHeightAnchor = passwordTextField.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 1/3)
-        
         passwordTextFieldHeightAnchor?.isActive = true
     }
-    
-    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

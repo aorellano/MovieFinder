@@ -38,7 +38,6 @@ class MovieLocationView: UIView {
     }
     
     func setupMovieLocationView() {
-
         addSubview(movieLocationSymbol)
         movieLocationSymbol.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         movieLocationSymbol.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 2).isActive = true

@@ -35,15 +35,13 @@ class HomeView: UIView {
         let control = UISegmentedControl(items: ["Now Showing", "Upcoming"])
         control.tintColor = .clear
         control.selectedSegmentIndex == 0
-            //control.addTarget(self, action: #selector(handleSegmentedControl), for: .valueChanged)
+        control.addTarget(self, action: #selector(handleSegmentedControl), for: .valueChanged)
         control.translatesAutoresizingMaskIntoConstraints = false
         return control
     }()
     
-    
     override init(frame: CGRect) {
         super.init(frame:frame)
-        
         
         backgroundColor = UIColor.backgroundColor
         setupAccountNameButton()
@@ -63,8 +61,6 @@ class HomeView: UIView {
     func setupAccountNameButton() {
         addSubview(accountNameButton)
         accountNameButton.addSubview(accountNameLabel)
-        
-        
         accountNameButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 8).isActive = true
         accountNameButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
         accountNameButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
@@ -72,7 +68,6 @@ class HomeView: UIView {
         
         accountNameLabel.centerXAnchor.constraint(equalTo: accountNameButton.centerXAnchor).isActive = true
         accountNameLabel.centerYAnchor.constraint(equalTo: accountNameButton.centerYAnchor).isActive = true
-        
     }
     
     func setupMovieLocationView() {
@@ -93,13 +88,20 @@ class HomeView: UIView {
         ]
         
         movieSegmentedControl.removeBorders()
-        
         movieSegmentedControl.setTitleTextAttributes(stringAttributes, for: .normal)
-    
         movieSegmentedControl.topAnchor.constraint(equalTo: movieLocationView.bottomAnchor, constant: 8).isActive = true
         movieSegmentedControl.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
         movieSegmentedControl.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         movieSegmentedControl.heightAnchor.constraint(equalToConstant: 40).isActive = true
+    }
+    
+    @objc func handleSegmentedControl() {
+        stringAttributes = [
+            .font: UIFont.boldSystemFont(ofSize: 25),
+            .foregroundColor: UIColor.highlightColor
+        ]
+
+        movieSegmentedControl.setTitleTextAttributes(stringAttributes, for: .selected)
     }
     
     required init?(coder: NSCoder) {

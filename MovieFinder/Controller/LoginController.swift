@@ -14,7 +14,6 @@ class LoginController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         addButtonTargets()
     }
     
@@ -55,11 +54,9 @@ class LoginController: UIViewController {
                 print(error as Any)
                 return
             }
-            
             guard let uid = currentUser?.user.uid else {
                 return
             }
-            
             let ref = Database.database().reference(fromURL: "https://moviefinder-edef6.firebaseio.com/")
             let usersReference = ref.child("users").child(uid)
             let values = ["name": name, "email": email]
@@ -68,14 +65,11 @@ class LoginController: UIViewController {
                     print(error as Any)
                     return
                 }
-                
                 let homeVC = HomeController()
                 self.navigationController?.pushViewController(homeVC, animated: true)
-                
             })
         })
     }
-
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }

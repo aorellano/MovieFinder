@@ -21,7 +21,6 @@ class SearchFieldView: UIView {
         
         let attributedString = NSAttributedString(string: "Search", attributes: styleAttributes)
         search.attributedPlaceholder = attributedString
-        
         search.translatesAutoresizingMaskIntoConstraints = false
         return search
     }()
@@ -55,7 +54,6 @@ class SearchFieldView: UIView {
         searchField.bottomAnchor.constraint(equalTo: searchFieldUnderline.topAnchor).isActive = true
         searchField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5).isActive = true
         searchField.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        
     }
     
     required init?(coder: NSCoder) {
