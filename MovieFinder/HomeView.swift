@@ -29,8 +29,6 @@ class HomeView: UIView {
     
     let searchFieldView = SearchFieldView()
     
-    let movieLocationView = MovieLocationView()
-    
     let movieSegmentedControl: UISegmentedControl = {
         let control = UISegmentedControl(items: ["Now Showing", "Upcoming"])
         control.tintColor = .clear
@@ -46,7 +44,6 @@ class HomeView: UIView {
         backgroundColor = UIColor.backgroundColor
         setupAccountNameButton()
         setupSearchFieldView()
-        setupMovieLocationView()
         setupMovieSegmentedControl()
     }
     
@@ -70,15 +67,6 @@ class HomeView: UIView {
         accountNameLabel.centerYAnchor.constraint(equalTo: accountNameButton.centerYAnchor).isActive = true
     }
     
-    func setupMovieLocationView() {
-        addSubview(movieLocationView)
-        movieLocationView.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        movieLocationView.leadingAnchor.constraint(equalTo: searchFieldView.leadingAnchor).isActive = true
-        movieLocationView.trailingAnchor.constraint(equalTo: searchFieldView.trailingAnchor).isActive = true
-        movieLocationView.topAnchor.constraint(equalTo: searchFieldView.bottomAnchor, constant: 10).isActive = true
-        
-    }
-    
     func setupMovieSegmentedControl() {
         addSubview(movieSegmentedControl)
     
@@ -89,7 +77,7 @@ class HomeView: UIView {
         
         movieSegmentedControl.removeBorders()
         movieSegmentedControl.setTitleTextAttributes(stringAttributes, for: .normal)
-        movieSegmentedControl.topAnchor.constraint(equalTo: movieLocationView.bottomAnchor, constant: 8).isActive = true
+        movieSegmentedControl.topAnchor.constraint(equalTo: searchFieldView.bottomAnchor, constant: 20).isActive = true
         movieSegmentedControl.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
         movieSegmentedControl.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         movieSegmentedControl.heightAnchor.constraint(equalToConstant: 40).isActive = true

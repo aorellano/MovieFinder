@@ -28,14 +28,13 @@ class HomeController: UIViewController, CLLocationManagerDelegate {
 
         movieCollectionView.delegate = self
         movieCollectionView.dataSource = self
-        
 
         checkIfUserIsLoggedIn()
         setupCollectionView()
         setupLocationManager()
         
         fetchHomeFeed{ (homeFeed) in
-            homeFeed.movies.forEach({print($0.title)})
+            homeFeed.results.forEach({print($0.title)})
             
         }
     }
@@ -48,7 +47,24 @@ class HomeController: UIViewController, CLLocationManagerDelegate {
     }
     
     func fetchHomeFeed(completion: @escaping (HomeFeed) -> ()) {
-        let urlString = ""
+        let urlString = "https://api.themoviedb.org/3/movie/now_playing?api_key=25d3b3b13927672472060f6f5971a50f&language=en-US&page=1"
+        let url = URL(string: urlString)
+        URLSession.shared.dataTask(with: url!) { (data, resp, err) in
+            guard let data = data else { return }
+            
+            do {
+                let homeFeed = try JSONDecoder().decode(HomeFeed.self, from: data)
+                completion(homeFeed)
+            }catch let jsonErr {
+                print("Failed to decode json:", jsonErr)
+            }
+        }.resume()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        }
     }
 
     func checkIfUserIsLoggedIn() {
@@ -72,7 +88,7 @@ class HomeController: UIViewController, CLLocationManagerDelegate {
     func setupCollectionView() {
         view.addSubview(movieCollectionView)
 
-        movieCollectionView.topAnchor.constraint(equalTo: homeView.movieSegmentedControl.bottomAnchor, constant: 10).isActive = true
+        movieCollectionView.topAnchor.constraint(equalTo: homeView.movieSegmentedControl.bottomAnchor, constant: 20).isActive = true
         movieCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         movieCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         movieCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
@@ -126,12 +142,17 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, 
 }
 
 struct HomeFeed: Decodable {
-    let movies: [Movie]
+    let results: [Movie]
 }
 
 struct Movie: Decodable {
     let id: Int
     let title: String
+}
+
+struct Genre: Decodable {
+    let id: Int
+    let name: String
 }
 
 
