@@ -32,10 +32,10 @@ class HomeController: UIViewController, CLLocationManagerDelegate {
         checkIfUserIsLoggedIn()
         setupCollectionView()
         setupLocationManager()
+
         
-        fetchHomeFeed{ (homeFeed) in
+        fetchGenericData(urlString:  "https://api.themoviedb.org/3/movie/now_playing?api_key=25d3b3b13927672472060f6f5971a50f&language=en-US&page=1") { (homeFeed: HomeFeed) in
             homeFeed.results.forEach({print($0.title)})
-            
         }
     }
     
@@ -45,16 +45,15 @@ class HomeController: UIViewController, CLLocationManagerDelegate {
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
     }
-    
-    func fetchHomeFeed(completion: @escaping (HomeFeed) -> ()) {
-        let urlString = "https://api.themoviedb.org/3/movie/now_playing?api_key=25d3b3b13927672472060f6f5971a50f&language=en-US&page=1"
+     
+    fileprivate func fetchGenericData<T: Decodable>(urlString:String, completion: @escaping (T) -> ()) {
         let url = URL(string: urlString)
         URLSession.shared.dataTask(with: url!) { (data, resp, err) in
             guard let data = data else { return }
             
             do {
-                let homeFeed = try JSONDecoder().decode(HomeFeed.self, from: data)
-                completion(homeFeed)
+                let obj = try JSONDecoder().decode(T.self, from: data)
+                completion(obj)
             }catch let jsonErr {
                 print("Failed to decode json:", jsonErr)
             }
@@ -141,13 +140,19 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
 }
 
+struct NowPlaying: Decodable {
+    let title:String
+    let original_language: String
+}
+
+
 struct HomeFeed: Decodable {
-    let results: [Movie]
+    let results: [NowPlaying]
 }
 
 struct Movie: Decodable {
-    let id: Int
     let title: String
+    let original_language: String
 }
 
 struct Genre: Decodable {

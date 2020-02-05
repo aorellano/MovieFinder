@@ -10,7 +10,7 @@ import UIKit
 
 class HomeView: UIView {
     var stringAttributes: [NSAttributedString.Key: Any]!
-    
+
     let accountNameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -30,9 +30,19 @@ class HomeView: UIView {
     let searchFieldView = SearchFieldView()
     
     let movieSegmentedControl: UISegmentedControl = {
+        let stringAttributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.boldSystemFont(ofSize: 17),
+            .foregroundColor: UIColor.white
+        ]
+        let selectedAttributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.boldSystemFont(ofSize: 25),
+            .foregroundColor: UIColor.highlightColor
+        ]
         let control = UISegmentedControl(items: ["Now Showing", "Upcoming"])
         control.tintColor = .clear
-        control.selectedSegmentIndex == 0
+        control.selectedSegmentIndex = 0
+        control.setTitleTextAttributes(stringAttributes, for: .normal)
+        control.setTitleTextAttributes(selectedAttributes, for: .selected)
         control.addTarget(self, action: #selector(handleSegmentedControl), for: .valueChanged)
         control.translatesAutoresizingMaskIntoConstraints = false
         return control
@@ -62,7 +72,6 @@ class HomeView: UIView {
         accountNameButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
         accountNameButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         accountNameButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        
         accountNameLabel.centerXAnchor.constraint(equalTo: accountNameButton.centerXAnchor).isActive = true
         accountNameLabel.centerYAnchor.constraint(equalTo: accountNameButton.centerYAnchor).isActive = true
     }
@@ -70,13 +79,7 @@ class HomeView: UIView {
     func setupMovieSegmentedControl() {
         addSubview(movieSegmentedControl)
     
-        stringAttributes = [
-            .font: UIFont.boldSystemFont(ofSize: 17),
-            .foregroundColor: UIColor.white
-        ]
-        
         movieSegmentedControl.removeBorders()
-        movieSegmentedControl.setTitleTextAttributes(stringAttributes, for: .normal)
         movieSegmentedControl.topAnchor.constraint(equalTo: searchFieldView.bottomAnchor, constant: 20).isActive = true
         movieSegmentedControl.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
         movieSegmentedControl.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
