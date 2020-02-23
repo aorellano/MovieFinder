@@ -19,5 +19,6 @@ extension UIColor {
 
 extension UIFont {
     static let titleFont = UIFont(name: "HelveticaNeue-Bold", size: 40)
+    static let secondaryTitleFont = UIFont(name: "HelveticaNeue-Bold", size: 30)
     static let locationTextFont = UIFont(name: "HelveticaNeue", size: 12)
 }
