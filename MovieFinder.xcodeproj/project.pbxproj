@@ -13,7 +13,7 @@
 		D0218ABA23C570ED0004931D /* AuthenticationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0218AB923C570ED0004931D /* AuthenticationTextField.swift */; };
 		D0218ABE23C59BBB0004931D /* AuthenticationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0218ABD23C59BBB0004931D /* AuthenticationButton.swift */; };
 		D0218AC023C5AC1D0004931D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0218ABF23C5AC1D0004931D /* SceneDelegate.swift */; };
-		D0218AC223C6A1770004931D /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0218AC123C6A1770004931D /* HomeController.swift */; };
+		D0218AC223C6A1770004931D /* RecommendationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0218AC123C6A1770004931D /* RecommendationController.swift */; };
 		D0218ACA23C7E85A0004931D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0218AC923C7E85A0004931D /* GoogleService-Info.plist */; };
 		D028AD0823CD893D009760F6 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D028AD0723CD893D009760F6 /* SettingsController.swift */; };
 		D0612AA123D65E63000A568A /* LoginInputsContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0612AA023D65E63000A568A /* LoginInputsContainerView.swift */; };
@@ -21,7 +21,8 @@
 		D0612AA523D67121000A568A /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0612AA423D67121000A568A /* SearchView.swift */; };
 		D0AC2C1123F9E165006C9E39 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC2C1023F9E165006C9E39 /* Networking.swift */; };
 		D0AC2C1323F9E614006C9E39 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC2C1223F9E614006C9E39 /* SearchController.swift */; };
-		D0AC2C1523F9E77A006C9E39 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC2C1423F9E77A006C9E39 /* HomeView.swift */; };
+		D0AC2C1523F9E77A006C9E39 /* RecommendationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC2C1423F9E77A006C9E39 /* RecommendationView.swift */; };
+		D0AC2C1724022D5D006C9E39 /* RecommendationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC2C1624022D5D006C9E39 /* RecommendationCell.swift */; };
 		D0B06A7623ECBC0300D32807 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B06A7523ECBC0300D32807 /* CategoryCell.swift */; };
 		D0EE456C23C5400C0011B364 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EE456B23C5400C0011B364 /* AppDelegate.swift */; };
 		D0EE457023C5400C0011B364 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EE456F23C5400C0011B364 /* LoginController.swift */; };
@@ -37,7 +38,7 @@
 		D0218AB923C570ED0004931D /* AuthenticationTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationTextField.swift; sourceTree = "<group>"; };
 		D0218ABD23C59BBB0004931D /* AuthenticationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationButton.swift; sourceTree = "<group>"; };
 		D0218ABF23C5AC1D0004931D /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D0218AC123C6A1770004931D /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		D0218AC123C6A1770004931D /* RecommendationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationController.swift; sourceTree = "<group>"; };
 		D0218AC923C7E85A0004931D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D028AD0723CD893D009760F6 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		D0612AA023D65E63000A568A /* LoginInputsContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputsContainerView.swift; sourceTree = "<group>"; };
@@ -45,7 +46,8 @@
 		D0612AA423D67121000A568A /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		D0AC2C1023F9E165006C9E39 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		D0AC2C1223F9E614006C9E39 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
-		D0AC2C1423F9E77A006C9E39 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		D0AC2C1423F9E77A006C9E39 /* RecommendationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationView.swift; sourceTree = "<group>"; };
+		D0AC2C1624022D5D006C9E39 /* RecommendationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationCell.swift; sourceTree = "<group>"; };
 		D0B06A7523ECBC0300D32807 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		D0EE456823C5400C0011B364 /* MovieFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0EE456B23C5400C0011B364 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -85,34 +87,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D0218AB023C5590F0004931D /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		D0218AB123C5591B0004931D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D0AC2C1423F9E77A006C9E39 /* HomeView.swift */,
-				D0218AB623C563E90004931D /* LoginView.swift */,
-				D0612AA423D67121000A568A /* SearchView.swift */,
-				D0612AA023D65E63000A568A /* LoginInputsContainerView.swift */,
-				D0218AB923C570ED0004931D /* AuthenticationTextField.swift */,
-				D0218ABD23C59BBB0004931D /* AuthenticationButton.swift */,
-				D0612AA223D670F7000A568A /* SearchFieldView.swift */,
 				D0B06A7523ECBC0300D32807 /* CategoryCell.swift */,
 			);
 			name = View;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		D0218AB223C559220004931D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				D0EE456F23C5400C0011B364 /* LoginController.swift */,
-				D0218AC123C6A1770004931D /* HomeController.swift */,
-				D0AC2C1223F9E614006C9E39 /* SearchController.swift */,
 				D028AD0723CD893D009760F6 /* SettingsController.swift */,
 			);
 			path = Controller;
@@ -125,6 +111,103 @@
 				D0AC2C1023F9E165006C9E39 /* Networking.swift */,
 			);
 			name = Constants;
+			sourceTree = "<group>";
+		};
+		D033410C240593D60041721C /* Recommendation */ = {
+			isa = PBXGroup;
+			children = (
+				D033410F240594010041721C /* Controller */,
+				D033410E240593F90041721C /* View */,
+				D033410D240593EE0041721C /* Model */,
+			);
+			path = Recommendation;
+			sourceTree = "<group>";
+		};
+		D033410D240593EE0041721C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D033410E240593F90041721C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D0AC2C1423F9E77A006C9E39 /* RecommendationView.swift */,
+				D0AC2C1624022D5D006C9E39 /* RecommendationCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D033410F240594010041721C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D0218AC123C6A1770004931D /* RecommendationController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D0334110240594210041721C /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				D03341142405946F0041721C /* View */,
+				D03341132405945F0041721C /* Controller */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		D03341132405945F0041721C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D0EE456F23C5400C0011B364 /* LoginController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D03341142405946F0041721C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D0218AB623C563E90004931D /* LoginView.swift */,
+				D0612AA023D65E63000A568A /* LoginInputsContainerView.swift */,
+				D0218AB923C570ED0004931D /* AuthenticationTextField.swift */,
+				D0218ABD23C59BBB0004931D /* AuthenticationButton.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D0334115240596380041721C /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				D0334118240596760041721C /* View */,
+				D03341172405966F0041721C /* Controller */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		D0334116240596420041721C /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				D0218AB123C5591B0004931D /* View */,
+				D0218AB223C559220004931D /* Controller */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		D03341172405966F0041721C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D0AC2C1223F9E614006C9E39 /* SearchController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D0334118240596760041721C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D0612AA423D67121000A568A /* SearchView.swift */,
+				D0612AA223D670F7000A568A /* SearchFieldView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		D0612AAA23D67DE7000A568A /* Extensions */ = {
@@ -155,11 +238,12 @@
 		D0EE456A23C5400C0011B364 /* MovieFinder */ = {
 			isa = PBXGroup;
 			children = (
-				D0612AAA23D67DE7000A568A /* Extensions */,
 				D0218AB323C5598A0004931D /* Constants */,
-				D0218AB223C559220004931D /* Controller */,
-				D0218AB123C5591B0004931D /* View */,
-				D0218AB023C5590F0004931D /* Model */,
+				D0612AAA23D67DE7000A568A /* Extensions */,
+				D0334110240594210041721C /* Authentication */,
+				D033410C240593D60041721C /* Recommendation */,
+				D0334115240596380041721C /* Search */,
+				D0334116240596420041721C /* Settings */,
 				D0EE456B23C5400C0011B364 /* AppDelegate.swift */,
 				D0218ABF23C5AC1D0004931D /* SceneDelegate.swift */,
 				D0EE457423C540120011B364 /* Assets.xcassets */,
@@ -290,7 +374,8 @@
 				D0218AC023C5AC1D0004931D /* SceneDelegate.swift in Sources */,
 				D0612AA123D65E63000A568A /* LoginInputsContainerView.swift in Sources */,
 				D0218AB523C5599D0004931D /* Theme.swift in Sources */,
-				D0218AC223C6A1770004931D /* HomeController.swift in Sources */,
+				D0218AC223C6A1770004931D /* RecommendationController.swift in Sources */,
+				D0AC2C1724022D5D006C9E39 /* RecommendationCell.swift in Sources */,
 				D0218ABE23C59BBB0004931D /* AuthenticationButton.swift in Sources */,
 				D0EE456C23C5400C0011B364 /* AppDelegate.swift in Sources */,
 				D028AD0823CD893D009760F6 /* SettingsController.swift in Sources */,
@@ -298,7 +383,7 @@
 				D0218AB723C563E90004931D /* LoginView.swift in Sources */,
 				D0612AA523D67121000A568A /* SearchView.swift in Sources */,
 				D0218ABA23C570ED0004931D /* AuthenticationTextField.swift in Sources */,
-				D0AC2C1523F9E77A006C9E39 /* HomeView.swift in Sources */,
+				D0AC2C1523F9E77A006C9E39 /* RecommendationView.swift in Sources */,
 				D0612AA323D670F7000A568A /* SearchFieldView.swift in Sources */,
 				D0AC2C1123F9E165006C9E39 /* Networking.swift in Sources */,
 			);
@@ -440,6 +525,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S7297N2DPU;
 				INFOPLIST_FILE = MovieFinder/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -459,6 +545,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S7297N2DPU;
 				INFOPLIST_FILE = MovieFinder/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeView: UIView {
+class RecommendationView: UIView {
     let headerLabel: UILabel = {
         let label = UILabel()
         label.text = "What do you feel like watching today?"
@@ -20,10 +20,19 @@ class HomeView: UIView {
         return label
     }()
     
+    let genreTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.register(RecommendationCell.self, forCellReuseIdentifier: "cellId")
+        tableView.backgroundColor = UIColor.backgroundColor
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = UIColor.backgroundColor
         positionHeaderLabel()
+        positionGenreTableView()
     }
     
     func positionHeaderLabel() {
@@ -32,6 +41,16 @@ class HomeView: UIView {
         headerLabel.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 30).isActive = true
         headerLabel.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -30).isActive = true
         headerLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 50).isActive = true
+    }
+    
+    func positionGenreTableView() {
+        addSubview(genreTableView)
+        
+        genreTableView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 40).isActive = true
+        genreTableView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        genreTableView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        genreTableView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+
     }
     
     required init?(coder: NSCoder) {

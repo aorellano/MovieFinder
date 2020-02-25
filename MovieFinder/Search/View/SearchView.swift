@@ -33,6 +33,7 @@ class SearchView: UIView {
         super.init(frame:frame)
         
         backgroundColor = UIColor.backgroundColor
+        
         setupAccountNameButton()
         setupSearchFieldView()
     }
