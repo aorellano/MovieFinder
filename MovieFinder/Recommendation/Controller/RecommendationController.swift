@@ -14,8 +14,34 @@ final class RecommendationController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupTableView()
+        print(baseUrl+ListType.genres.rawValue+apiKey+defaultLanguage)
+        fetchData(urlString: baseUrl+ListType.genres.rawValue+apiKey+defaultLanguage) { (recommendationFeed: RecommendationFeed) in
+            recommendationFeed.genres.forEach({print($0.name)})
+            
+            
+        }
+        
+        
+    }
+    
+    private func setupTableView() {
         recommendationView.genreTableView.dataSource = self
         recommendationView.genreTableView.delegate = self
+    }
+    
+    fileprivate func fetchData<T: Decodable>(urlString:String, completion: @escaping (T) -> ()) {
+        let url = URL(string: urlString)
+        URLSession.shared.dataTask(with: url!) { (data, resp, err) in
+            guard let data = data else { return }
+            
+            do {
+                let obj = try JSONDecoder().decode(T.self, from: data)
+            }catch let jsonErr {
+                print("Failed to decode json:", jsonErr)
+            }
+            
+        }.resume()
     }
     
     override func loadView() {

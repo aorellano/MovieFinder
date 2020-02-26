@@ -36,9 +36,7 @@ class SearchController: UIViewController, CLLocationManagerDelegate {
         setupLocationManager()
 
         
-        fetchGenericData(urlString:  "https://api.themoviedb.org/3/genre/movie/list?api_key=25d3b3b13927672472060f6f5971a50f&language=en-US") { (homeFeed: HomeFeed) in
-            homeFeed.genres.forEach({print($0.id, $0.name)})
-        }
+
     }
     
     func setupLocationManager() {
@@ -155,9 +153,4 @@ struct HomeFeed: Decodable {
 struct Movie: Decodable {
     let title: String
     let original_language: String
-}
-
-struct Genre: Decodable {
-    let id: Int
-    let name: String
 }

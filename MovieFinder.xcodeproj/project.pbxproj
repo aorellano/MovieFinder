@@ -16,6 +16,10 @@
 		D0218AC223C6A1770004931D /* RecommendationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0218AC123C6A1770004931D /* RecommendationController.swift */; };
 		D0218ACA23C7E85A0004931D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0218AC923C7E85A0004931D /* GoogleService-Info.plist */; };
 		D028AD0823CD893D009760F6 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D028AD0723CD893D009760F6 /* SettingsController.swift */; };
+		D033411A2405AAFE0041721C /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03341192405AAFE0041721C /* Genre.swift */; };
+		D033411C2405ABD60041721C /* RecommendationFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = D033411B2405ABD60041721C /* RecommendationFeed.swift */; };
+		D033411F2405FA1C0041721C /* ApiResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D033411E2405FA1C0041721C /* ApiResource.swift */; };
+		D0334121240628D90041721C /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0334120240628D90041721C /* NetworkRequest.swift */; };
 		D0612AA123D65E63000A568A /* LoginInputsContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0612AA023D65E63000A568A /* LoginInputsContainerView.swift */; };
 		D0612AA323D670F7000A568A /* SearchFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0612AA223D670F7000A568A /* SearchFieldView.swift */; };
 		D0612AA523D67121000A568A /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0612AA423D67121000A568A /* SearchView.swift */; };
@@ -41,6 +45,10 @@
 		D0218AC123C6A1770004931D /* RecommendationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationController.swift; sourceTree = "<group>"; };
 		D0218AC923C7E85A0004931D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D028AD0723CD893D009760F6 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		D03341192405AAFE0041721C /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		D033411B2405ABD60041721C /* RecommendationFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationFeed.swift; sourceTree = "<group>"; };
+		D033411E2405FA1C0041721C /* ApiResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResource.swift; sourceTree = "<group>"; };
+		D0334120240628D90041721C /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		D0612AA023D65E63000A568A /* LoginInputsContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputsContainerView.swift; sourceTree = "<group>"; };
 		D0612AA223D670F7000A568A /* SearchFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFieldView.swift; sourceTree = "<group>"; };
 		D0612AA423D67121000A568A /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
@@ -126,6 +134,8 @@
 		D033410D240593EE0041721C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D03341192405AAFE0041721C /* Genre.swift */,
+				D033411B2405ABD60041721C /* RecommendationFeed.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -210,6 +220,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		D033411D2405FA060041721C /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D033411E2405FA1C0041721C /* ApiResource.swift */,
+				D0334120240628D90041721C /* NetworkRequest.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		D0612AAA23D67DE7000A568A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,6 +257,7 @@
 		D0EE456A23C5400C0011B364 /* MovieFinder */ = {
 			isa = PBXGroup;
 			children = (
+				D033411D2405FA060041721C /* Protocols */,
 				D0218AB323C5598A0004931D /* Constants */,
 				D0612AAA23D67DE7000A568A /* Extensions */,
 				D0334110240594210041721C /* Authentication */,
@@ -376,8 +396,10 @@
 				D0218AB523C5599D0004931D /* Theme.swift in Sources */,
 				D0218AC223C6A1770004931D /* RecommendationController.swift in Sources */,
 				D0AC2C1724022D5D006C9E39 /* RecommendationCell.swift in Sources */,
+				D0334121240628D90041721C /* NetworkRequest.swift in Sources */,
 				D0218ABE23C59BBB0004931D /* AuthenticationButton.swift in Sources */,
 				D0EE456C23C5400C0011B364 /* AppDelegate.swift in Sources */,
+				D033411A2405AAFE0041721C /* Genre.swift in Sources */,
 				D028AD0823CD893D009760F6 /* SettingsController.swift in Sources */,
 				D0B06A7623ECBC0300D32807 /* CategoryCell.swift in Sources */,
 				D0218AB723C563E90004931D /* LoginView.swift in Sources */,
@@ -385,6 +407,8 @@
 				D0218ABA23C570ED0004931D /* AuthenticationTextField.swift in Sources */,
 				D0AC2C1523F9E77A006C9E39 /* RecommendationView.swift in Sources */,
 				D0612AA323D670F7000A568A /* SearchFieldView.swift in Sources */,
+				D033411C2405ABD60041721C /* RecommendationFeed.swift in Sources */,
+				D033411F2405FA1C0041721C /* ApiResource.swift in Sources */,
 				D0AC2C1123F9E165006C9E39 /* Networking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

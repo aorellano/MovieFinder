@@ -37,7 +37,7 @@ enum ListType: String {
     var rawValue: String {
         switch self {
         case .genres:
-            return "genres/movie/list"
+            return "genre/movie/list?api_key="
         case .nowPlaying:
             return "movie/now_playing"
         default:
