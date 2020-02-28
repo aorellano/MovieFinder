@@ -1,5 +1,5 @@
 //
-//  RecommendationFeed.swift
+//  ImageRequest.swift
 //  MovieFinder
 //
 //  Created by Alexis Orellano on 2/25/20.
@@ -8,6 +8,4 @@
 
 import UIKit
 
-struct RecommendationFeed: Decodable {
-    let genres: [Genre]
-}
+

@@ -150,7 +150,3 @@ struct HomeFeed: Decodable {
     let genres: [NowPlaying]
 }
 
-struct Movie: Decodable {
-    let title: String
-    let original_language: String
-}

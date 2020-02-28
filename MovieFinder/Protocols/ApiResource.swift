@@ -8,23 +8,21 @@
 
 import UIKit
 
-protocol ApiResource {
-    //ModelType can be of any type that conforms to decodable
-    associatedtype ModelType: Decodable
-    var methodPath: String { get }
-}
-
-extension ApiResource {
-    var url: URL {
-        var components = URLComponents(string: baseUrl)!
-        components.path = methodPath
-        components.queryItems = [
-        URLQueryItem(name: "api_key", value: apiKey),
-        URLQueryItem(name: "language", value: "en-US"),
-        URLQueryItem(name: "page", value: "1"),
-        URLQueryItem(name: "region", value: "US")
-        ]
-        
-        return components.url!
-    }
-}
+//protocol APIResource {
+//    associatedtype ModelType: Decodable
+//    var methodPath: String { get }
+//}
+//
+//extension APIResource {
+//    var url: URL {
+//        var components = URLComponents(string: "https://api.stackexchange.com/2.2")!
+//        components.path = methodPath
+//        components.queryItems = [
+//            URLQueryItem(name: "site", value: "stackoverflow"),
+//            URLQueryItem(name: "order", value: "desc"),
+//            URLQueryItem(name: "sort", value: "votes"),
+//            URLQueryItem(name: "tagged", value: "ios")
+//        ]
+//        return components.url!
+//    }
+//}

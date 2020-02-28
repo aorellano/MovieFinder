@@ -1,5 +1,5 @@
 //
-//  Genre.swift
+//  RecommendationFeed.swift
 //  MovieFinder
 //
 //  Created by Alexis Orellano on 2/25/20.
@@ -8,6 +8,6 @@
 
 import UIKit
 
-struct Genre: Decodable {
-    let name: String
-}
+//struct RecommendationFeed: Decodable {
+//    let genres: [Genre]
+//}

@@ -16,13 +16,27 @@
 		D0218AC223C6A1770004931D /* RecommendationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0218AC123C6A1770004931D /* RecommendationController.swift */; };
 		D0218ACA23C7E85A0004931D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0218AC923C7E85A0004931D /* GoogleService-Info.plist */; };
 		D028AD0823CD893D009760F6 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D028AD0723CD893D009760F6 /* SettingsController.swift */; };
+		D029CA6224070B880005F82E /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D029CA6124070B880005F82E /* Router.swift */; };
+		D029CA652407267D0005F82E /* MovieEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D029CA642407267D0005F82E /* MovieEndPoint.swift */; };
 		D033411A2405AAFE0041721C /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03341192405AAFE0041721C /* Genre.swift */; };
 		D033411C2405ABD60041721C /* RecommendationFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = D033411B2405ABD60041721C /* RecommendationFeed.swift */; };
 		D033411F2405FA1C0041721C /* ApiResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D033411E2405FA1C0041721C /* ApiResource.swift */; };
 		D0334121240628D90041721C /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0334120240628D90041721C /* NetworkRequest.swift */; };
+		D033412424062C2B0041721C /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D033412324062C2B0041721C /* ApiRequest.swift */; };
+		D0334126240631540041721C /* ImageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0334125240631540041721C /* ImageRequest.swift */; };
+		D0334128240646E50041721C /* Wrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0334127240646E50041721C /* Wrapper.swift */; };
+		D033412B2406F29F0041721C /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D033412A2406F29F0041721C /* EndPointType.swift */; };
+		D033412D2406F3660041721C /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = D033412C2406F3660041721C /* HTTPMethod.swift */; };
+		D033412F2406F3CD0041721C /* HTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D033412E2406F3CD0041721C /* HTTPTask.swift */; };
+		D03341322406F4FC0041721C /* ParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03341312406F4FC0041721C /* ParameterEncoder.swift */; };
+		D03341342406F6C30041721C /* URLParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03341332406F6C30041721C /* URLParameterEncoder.swift */; };
+		D03341362406F9E90041721C /* JSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03341352406F9E90041721C /* JSONParameterEncoder.swift */; };
+		D03341392407056B0041721C /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03341382407056B0041721C /* NetworkRouter.swift */; };
 		D0612AA123D65E63000A568A /* LoginInputsContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0612AA023D65E63000A568A /* LoginInputsContainerView.swift */; };
 		D0612AA323D670F7000A568A /* SearchFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0612AA223D670F7000A568A /* SearchFieldView.swift */; };
 		D0612AA523D67121000A568A /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0612AA423D67121000A568A /* SearchView.swift */; };
+		D08DEA272408937700AD9953 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08DEA262408937700AD9953 /* MovieModel.swift */; };
+		D08DEA292408972C00AD9953 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08DEA282408972C00AD9953 /* NetworkManager.swift */; };
 		D0AC2C1123F9E165006C9E39 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC2C1023F9E165006C9E39 /* Networking.swift */; };
 		D0AC2C1323F9E614006C9E39 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC2C1223F9E614006C9E39 /* SearchController.swift */; };
 		D0AC2C1523F9E77A006C9E39 /* RecommendationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC2C1423F9E77A006C9E39 /* RecommendationView.swift */; };
@@ -45,13 +59,27 @@
 		D0218AC123C6A1770004931D /* RecommendationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationController.swift; sourceTree = "<group>"; };
 		D0218AC923C7E85A0004931D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D028AD0723CD893D009760F6 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		D029CA6124070B880005F82E /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		D029CA642407267D0005F82E /* MovieEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieEndPoint.swift; sourceTree = "<group>"; };
 		D03341192405AAFE0041721C /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		D033411B2405ABD60041721C /* RecommendationFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationFeed.swift; sourceTree = "<group>"; };
 		D033411E2405FA1C0041721C /* ApiResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResource.swift; sourceTree = "<group>"; };
 		D0334120240628D90041721C /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		D033412324062C2B0041721C /* ApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
+		D0334125240631540041721C /* ImageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRequest.swift; sourceTree = "<group>"; };
+		D0334127240646E50041721C /* Wrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wrapper.swift; sourceTree = "<group>"; };
+		D033412A2406F29F0041721C /* EndPointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointType.swift; sourceTree = "<group>"; };
+		D033412C2406F3660041721C /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		D033412E2406F3CD0041721C /* HTTPTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTask.swift; sourceTree = "<group>"; };
+		D03341312406F4FC0041721C /* ParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterEncoder.swift; sourceTree = "<group>"; };
+		D03341332406F6C30041721C /* URLParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParameterEncoder.swift; sourceTree = "<group>"; };
+		D03341352406F9E90041721C /* JSONParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParameterEncoder.swift; sourceTree = "<group>"; };
+		D03341382407056B0041721C /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
 		D0612AA023D65E63000A568A /* LoginInputsContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputsContainerView.swift; sourceTree = "<group>"; };
 		D0612AA223D670F7000A568A /* SearchFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFieldView.swift; sourceTree = "<group>"; };
 		D0612AA423D67121000A568A /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		D08DEA262408937700AD9953 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
+		D08DEA282408972C00AD9953 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		D0AC2C1023F9E165006C9E39 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		D0AC2C1223F9E614006C9E39 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		D0AC2C1423F9E77A006C9E39 /* RecommendationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationView.swift; sourceTree = "<group>"; };
@@ -121,12 +149,19 @@
 			name = Constants;
 			sourceTree = "<group>";
 		};
+		D029CA63240726130005F82E /* EndPoint */ = {
+			isa = PBXGroup;
+			children = (
+				D029CA642407267D0005F82E /* MovieEndPoint.swift */,
+			);
+			path = EndPoint;
+			sourceTree = "<group>";
+		};
 		D033410C240593D60041721C /* Recommendation */ = {
 			isa = PBXGroup;
 			children = (
 				D033410F240594010041721C /* Controller */,
 				D033410E240593F90041721C /* View */,
-				D033410D240593EE0041721C /* Model */,
 			);
 			path = Recommendation;
 			sourceTree = "<group>";
@@ -136,6 +171,8 @@
 			children = (
 				D03341192405AAFE0041721C /* Genre.swift */,
 				D033411B2405ABD60041721C /* RecommendationFeed.swift */,
+				D0334127240646E50041721C /* Wrapper.swift */,
+				D08DEA262408937700AD9953 /* MovieModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -229,11 +266,54 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		D033412224062C070041721C /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				D08DEA2A2408973500AD9953 /* Manager */,
+				D029CA63240726130005F82E /* EndPoint */,
+				D03341302406F4E50041721C /* Encoding */,
+				D03341292406F28A0041721C /* Service */,
+				D033412324062C2B0041721C /* ApiRequest.swift */,
+				D0334125240631540041721C /* ImageRequest.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		D03341292406F28A0041721C /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				D033412A2406F29F0041721C /* EndPointType.swift */,
+				D033412C2406F3660041721C /* HTTPMethod.swift */,
+				D033412E2406F3CD0041721C /* HTTPTask.swift */,
+				D03341382407056B0041721C /* NetworkRouter.swift */,
+				D029CA6124070B880005F82E /* Router.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		D03341302406F4E50041721C /* Encoding */ = {
+			isa = PBXGroup;
+			children = (
+				D03341312406F4FC0041721C /* ParameterEncoder.swift */,
+				D03341332406F6C30041721C /* URLParameterEncoder.swift */,
+				D03341352406F9E90041721C /* JSONParameterEncoder.swift */,
+			);
+			path = Encoding;
+			sourceTree = "<group>";
+		};
 		D0612AAA23D67DE7000A568A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D08DEA2A2408973500AD9953 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				D08DEA282408972C00AD9953 /* NetworkManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		D0EE455F23C5400C0011B364 = {
@@ -257,7 +337,9 @@
 		D0EE456A23C5400C0011B364 /* MovieFinder */ = {
 			isa = PBXGroup;
 			children = (
+				D033412224062C070041721C /* Networking */,
 				D033411D2405FA060041721C /* Protocols */,
+				D033410D240593EE0041721C /* Model */,
 				D0218AB323C5598A0004931D /* Constants */,
 				D0612AAA23D67DE7000A568A /* Extensions */,
 				D0334110240594210041721C /* Authentication */,
@@ -391,24 +473,38 @@
 			files = (
 				D0EE457023C5400C0011B364 /* LoginController.swift in Sources */,
 				D0AC2C1323F9E614006C9E39 /* SearchController.swift in Sources */,
+				D029CA652407267D0005F82E /* MovieEndPoint.swift in Sources */,
 				D0218AC023C5AC1D0004931D /* SceneDelegate.swift in Sources */,
+				D03341342406F6C30041721C /* URLParameterEncoder.swift in Sources */,
 				D0612AA123D65E63000A568A /* LoginInputsContainerView.swift in Sources */,
+				D08DEA272408937700AD9953 /* MovieModel.swift in Sources */,
+				D0334126240631540041721C /* ImageRequest.swift in Sources */,
 				D0218AB523C5599D0004931D /* Theme.swift in Sources */,
+				D03341322406F4FC0041721C /* ParameterEncoder.swift in Sources */,
+				D029CA6224070B880005F82E /* Router.swift in Sources */,
 				D0218AC223C6A1770004931D /* RecommendationController.swift in Sources */,
 				D0AC2C1724022D5D006C9E39 /* RecommendationCell.swift in Sources */,
+				D033412B2406F29F0041721C /* EndPointType.swift in Sources */,
 				D0334121240628D90041721C /* NetworkRequest.swift in Sources */,
+				D033412D2406F3660041721C /* HTTPMethod.swift in Sources */,
 				D0218ABE23C59BBB0004931D /* AuthenticationButton.swift in Sources */,
+				D08DEA292408972C00AD9953 /* NetworkManager.swift in Sources */,
+				D033412F2406F3CD0041721C /* HTTPTask.swift in Sources */,
 				D0EE456C23C5400C0011B364 /* AppDelegate.swift in Sources */,
 				D033411A2405AAFE0041721C /* Genre.swift in Sources */,
 				D028AD0823CD893D009760F6 /* SettingsController.swift in Sources */,
 				D0B06A7623ECBC0300D32807 /* CategoryCell.swift in Sources */,
+				D03341392407056B0041721C /* NetworkRouter.swift in Sources */,
 				D0218AB723C563E90004931D /* LoginView.swift in Sources */,
+				D03341362406F9E90041721C /* JSONParameterEncoder.swift in Sources */,
 				D0612AA523D67121000A568A /* SearchView.swift in Sources */,
 				D0218ABA23C570ED0004931D /* AuthenticationTextField.swift in Sources */,
+				D0334128240646E50041721C /* Wrapper.swift in Sources */,
 				D0AC2C1523F9E77A006C9E39 /* RecommendationView.swift in Sources */,
 				D0612AA323D670F7000A568A /* SearchFieldView.swift in Sources */,
 				D033411C2405ABD60041721C /* RecommendationFeed.swift in Sources */,
 				D033411F2405FA1C0041721C /* ApiResource.swift in Sources */,
+				D033412424062C2B0041721C /* ApiRequest.swift in Sources */,
 				D0AC2C1123F9E165006C9E39 /* Networking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

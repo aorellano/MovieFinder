@@ -10,19 +10,32 @@ import UIKit
 
 final class RecommendationController: UIViewController {
     let recommendationView = RecommendationView()
+    private var request: AnyObject?
+    
+    var networkManager: NetworkManager!
+    
+    init(networkManager: NetworkManager) {
+        super.init(nibName: nil, bundle: nil)
+        self.networkManager = networkManager
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTableView()
-        print(baseUrl+ListType.genres.rawValue+apiKey+defaultLanguage)
-        fetchData(urlString: baseUrl+ListType.genres.rawValue+apiKey+defaultLanguage) { (recommendationFeed: RecommendationFeed) in
-            recommendationFeed.genres.forEach({print($0.name)})
-            
-            
+        
+        networkManager.getNewMovies(page: 1) { movies, error in
+            if let error = error {
+                print(error)
+            }
+            if let movies = movies {
+                print(movies)
+            }
         }
-        
-        
     }
     
     private func setupTableView() {
@@ -30,20 +43,15 @@ final class RecommendationController: UIViewController {
         recommendationView.genreTableView.delegate = self
     }
     
-    fileprivate func fetchData<T: Decodable>(urlString:String, completion: @escaping (T) -> ()) {
-        let url = URL(string: urlString)
-        URLSession.shared.dataTask(with: url!) { (data, resp, err) in
-            guard let data = data else { return }
-            
-            do {
-                let obj = try JSONDecoder().decode(T.self, from: data)
-            }catch let jsonErr {
-                print("Failed to decode json:", jsonErr)
-            }
-            
-        }.resume()
-    }
-    
+//    func fetchRequest() {
+//        let genreRequest = APIRequest(resource: GenreResourse())
+//        request = genreRequest
+//        genreRequest.load { [weak self] (genres: [Genre]?) in
+//            print(genres)
+//
+//        }
+//
+//    }
     override func loadView() {
         view = recommendationView
     }
