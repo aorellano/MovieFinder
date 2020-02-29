@@ -8,12 +8,6 @@
 
 import UIKit
 
-struct Genre {
+struct Genre: Decodable {
     let name: String
-}
-
-extension Genre: Decodable {
-    enum CodingKeys: String, CodingKey {
-        case name = "name"
-    }
 }
