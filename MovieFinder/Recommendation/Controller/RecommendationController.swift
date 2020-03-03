@@ -19,20 +19,17 @@ final class RecommendationController: UIViewController {
         
         setupTableView()
         
-        manager.getFeed(from: .genre) { result in
-            switch result {
-            case .success(let recommendationFeedResult):
-                guard let recommendationResults = recommendationFeedResult?.genres else { return }
-//                let genre = Genre()
-//
-//                //recommendationResults.forEach({print($0.name)})
-//                genres = [Genre]()
-//                genres.append
-                
-            case .failure(let error):
-                print(error)
-            }
-        }
+//        manager.getFeed(from: .genre) { result in
+//            switch result {
+//            case .success(let recommendationFeedResult):
+//                if genres = genres {
+//                    
+//                }
+//                
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
         
         
         

@@ -25,7 +25,6 @@ extension Endpoint {
             URLQueryItem(name: "api_key", value: apiKey),
             URLQueryItem(name: "language", value: "en-US")
         ]
-        print(components)
         return components
     }
     

@@ -8,10 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		B34C663BCD8740D7AD431D82 /* Pods_MovieFinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B19952279EF4050BE7FB27 /* Pods_MovieFinder.framework */; };
+		D0138889240DD9E600EAA5F8 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0138888240DD9E600EAA5F8 /* Movie.swift */; };
+		D013888B240DE0E100EAA5F8 /* RecommendationFeedResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D013888A240DE0E100EAA5F8 /* RecommendationFeedResult.swift */; };
 		D014A5AD2409993800D32235 /* RecommendationFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = D014A5AC2409993800D32235 /* RecommendationFeed.swift */; };
 		D014A5AF24099B6A00D32235 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D014A5AE24099B6A00D32235 /* APIManager.swift */; };
 		D014A5B52409C18400D32235 /* RecommendationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D014A5B42409C18400D32235 /* RecommendationAPI.swift */; };
-		D014A5B72409C57600D32235 /* RecommendationFeedResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D014A5B62409C57600D32235 /* RecommendationFeedResult.swift */; };
 		D0218AB523C5599D0004931D /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0218AB423C5599D0004931D /* Theme.swift */; };
 		D0218AB723C563E90004931D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0218AB623C563E90004931D /* LoginView.swift */; };
 		D0218ABA23C570ED0004931D /* AuthenticationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0218AB923C570ED0004931D /* AuthenticationTextField.swift */; };
@@ -21,15 +22,10 @@
 		D0218ACA23C7E85A0004931D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0218AC923C7E85A0004931D /* GoogleService-Info.plist */; };
 		D028AD0823CD893D009760F6 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D028AD0723CD893D009760F6 /* SettingsController.swift */; };
 		D033411A2405AAFE0041721C /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03341192405AAFE0041721C /* Genre.swift */; };
-		D033411F2405FA1C0041721C /* ApiResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D033411E2405FA1C0041721C /* ApiResource.swift */; };
-		D0334121240628D90041721C /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0334120240628D90041721C /* NetworkRequest.swift */; };
-		D0334128240646E50041721C /* Wrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0334127240646E50041721C /* Wrapper.swift */; };
 		D033412B2406F29F0041721C /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D033412A2406F29F0041721C /* Endpoint.swift */; };
 		D0612AA123D65E63000A568A /* LoginInputsContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0612AA023D65E63000A568A /* LoginInputsContainerView.swift */; };
 		D0612AA323D670F7000A568A /* SearchFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0612AA223D670F7000A568A /* SearchFieldView.swift */; };
 		D0612AA523D67121000A568A /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0612AA423D67121000A568A /* SearchView.swift */; };
-		D08DEA272408937700AD9953 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08DEA262408937700AD9953 /* MovieModel.swift */; };
-		D0AC2C1123F9E165006C9E39 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC2C1023F9E165006C9E39 /* Networking.swift */; };
 		D0AC2C1323F9E614006C9E39 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC2C1223F9E614006C9E39 /* SearchController.swift */; };
 		D0AC2C1523F9E77A006C9E39 /* RecommendationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC2C1423F9E77A006C9E39 /* RecommendationView.swift */; };
 		D0AC2C1724022D5D006C9E39 /* RecommendationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC2C1624022D5D006C9E39 /* RecommendationCell.swift */; };
@@ -43,10 +39,11 @@
 /* Begin PBXFileReference section */
 		798A604BAAED7568CD338030 /* Pods-MovieFinder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieFinder.debug.xcconfig"; path = "Target Support Files/Pods-MovieFinder/Pods-MovieFinder.debug.xcconfig"; sourceTree = "<group>"; };
 		99CE5284AF9A4D9126781EE4 /* Pods-MovieFinder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieFinder.release.xcconfig"; path = "Target Support Files/Pods-MovieFinder/Pods-MovieFinder.release.xcconfig"; sourceTree = "<group>"; };
+		D0138888240DD9E600EAA5F8 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		D013888A240DE0E100EAA5F8 /* RecommendationFeedResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationFeedResult.swift; sourceTree = "<group>"; };
 		D014A5AC2409993800D32235 /* RecommendationFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationFeed.swift; sourceTree = "<group>"; };
 		D014A5AE24099B6A00D32235 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		D014A5B42409C18400D32235 /* RecommendationAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationAPI.swift; sourceTree = "<group>"; };
-		D014A5B62409C57600D32235 /* RecommendationFeedResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationFeedResult.swift; sourceTree = "<group>"; };
 		D0218AB423C5599D0004931D /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		D0218AB623C563E90004931D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		D0218AB923C570ED0004931D /* AuthenticationTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationTextField.swift; sourceTree = "<group>"; };
@@ -56,15 +53,10 @@
 		D0218AC923C7E85A0004931D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D028AD0723CD893D009760F6 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		D03341192405AAFE0041721C /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
-		D033411E2405FA1C0041721C /* ApiResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResource.swift; sourceTree = "<group>"; };
-		D0334120240628D90041721C /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
-		D0334127240646E50041721C /* Wrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wrapper.swift; sourceTree = "<group>"; };
 		D033412A2406F29F0041721C /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		D0612AA023D65E63000A568A /* LoginInputsContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputsContainerView.swift; sourceTree = "<group>"; };
 		D0612AA223D670F7000A568A /* SearchFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFieldView.swift; sourceTree = "<group>"; };
 		D0612AA423D67121000A568A /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
-		D08DEA262408937700AD9953 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
-		D0AC2C1023F9E165006C9E39 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		D0AC2C1223F9E614006C9E39 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		D0AC2C1423F9E77A006C9E39 /* RecommendationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationView.swift; sourceTree = "<group>"; };
 		D0AC2C1624022D5D006C9E39 /* RecommendationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationCell.swift; sourceTree = "<group>"; };
@@ -128,7 +120,6 @@
 			isa = PBXGroup;
 			children = (
 				D0218AB423C5599D0004931D /* Theme.swift */,
-				D0AC2C1023F9E165006C9E39 /* Networking.swift */,
 			);
 			name = Constants;
 			sourceTree = "<group>";
@@ -146,9 +137,8 @@
 			isa = PBXGroup;
 			children = (
 				D03341192405AAFE0041721C /* Genre.swift */,
-				D0334127240646E50041721C /* Wrapper.swift */,
-				D08DEA262408937700AD9953 /* MovieModel.swift */,
-				D014A5B62409C57600D32235 /* RecommendationFeedResult.swift */,
+				D0138888240DD9E600EAA5F8 /* Movie.swift */,
+				D013888A240DE0E100EAA5F8 /* RecommendationFeedResult.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -233,15 +223,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		D033411D2405FA060041721C /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				D033411E2405FA1C0041721C /* ApiResource.swift */,
-				D0334120240628D90041721C /* NetworkRequest.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
 		D033412224062C070041721C /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,7 +263,6 @@
 			isa = PBXGroup;
 			children = (
 				D033412224062C070041721C /* Networking */,
-				D033411D2405FA060041721C /* Protocols */,
 				D033410D240593EE0041721C /* Model */,
 				D0218AB323C5598A0004931D /* Constants */,
 				D0612AAA23D67DE7000A568A /* Extensions */,
@@ -418,17 +398,16 @@
 				D0EE457023C5400C0011B364 /* LoginController.swift in Sources */,
 				D0AC2C1323F9E614006C9E39 /* SearchController.swift in Sources */,
 				D0218AC023C5AC1D0004931D /* SceneDelegate.swift in Sources */,
+				D0138889240DD9E600EAA5F8 /* Movie.swift in Sources */,
 				D0612AA123D65E63000A568A /* LoginInputsContainerView.swift in Sources */,
 				D014A5AF24099B6A00D32235 /* APIManager.swift in Sources */,
-				D08DEA272408937700AD9953 /* MovieModel.swift in Sources */,
 				D0218AB523C5599D0004931D /* Theme.swift in Sources */,
+				D013888B240DE0E100EAA5F8 /* RecommendationFeedResult.swift in Sources */,
 				D0218AC223C6A1770004931D /* RecommendationController.swift in Sources */,
 				D0AC2C1724022D5D006C9E39 /* RecommendationCell.swift in Sources */,
 				D033412B2406F29F0041721C /* Endpoint.swift in Sources */,
-				D0334121240628D90041721C /* NetworkRequest.swift in Sources */,
 				D0218ABE23C59BBB0004931D /* AuthenticationButton.swift in Sources */,
 				D0EE456C23C5400C0011B364 /* AppDelegate.swift in Sources */,
-				D014A5B72409C57600D32235 /* RecommendationFeedResult.swift in Sources */,
 				D033411A2405AAFE0041721C /* Genre.swift in Sources */,
 				D028AD0823CD893D009760F6 /* SettingsController.swift in Sources */,
 				D014A5B52409C18400D32235 /* RecommendationAPI.swift in Sources */,
@@ -436,12 +415,9 @@
 				D0218AB723C563E90004931D /* LoginView.swift in Sources */,
 				D0612AA523D67121000A568A /* SearchView.swift in Sources */,
 				D0218ABA23C570ED0004931D /* AuthenticationTextField.swift in Sources */,
-				D0334128240646E50041721C /* Wrapper.swift in Sources */,
 				D0AC2C1523F9E77A006C9E39 /* RecommendationView.swift in Sources */,
 				D0612AA323D670F7000A568A /* SearchFieldView.swift in Sources */,
-				D033411F2405FA1C0041721C /* ApiResource.swift in Sources */,
 				D014A5AD2409993800D32235 /* RecommendationFeed.swift in Sources */,
-				D0AC2C1123F9E165006C9E39 /* Networking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

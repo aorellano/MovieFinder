@@ -35,7 +35,6 @@ extension APIManager {
                     }
                 }
             }
-            
         }
         return task
     }
@@ -48,7 +47,6 @@ extension APIManager {
                     completion(.success(value))
                     print(value)
                 }
-                
             }
         }
         task.resume()
