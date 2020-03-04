@@ -10,10 +10,11 @@ import UIKit
 
 protocol APIManager {
     var session: URLSession { get }
-    func fetch<T: Decodable>(with request: URLRequest, decode: @escaping(Decodable) -> T?, completion: @escaping (Result<T, Error>) -> Void)
+    func fetch<T: Decodable>(with request: URLRequest, decode: @escaping(Decodable) -> T?, completion: @escaping(T?, Error?) -> ())
 }
 
 extension APIManager {
+
     //This function will be the one in charge of parsing or rather decoding the JSON data, it takes a request as
     //a parameter, the type of an object that conforms to Decodable and a completion handler, and it returns
     //a URLSessionDataTask
@@ -39,12 +40,10 @@ extension APIManager {
         return task
     }
     
-    func fetch<T: Decodable>(with request: URLRequest, decode: @escaping (Decodable) -> T?, completion: @escaping (Result<T, Error>) -> Void) {
+    func fetch<T: Decodable>(with request: URLRequest, decode: @escaping (Decodable) -> T?, completion: @escaping (T?, Error?) -> ()) {
         let task = decodingTask(with: request, decodingType: T.self) { (json, error) in
             DispatchQueue.main.async {
-                
                 if let value = decode(json!) {
-                    completion(.success(value))
                     print(value)
                 }
             }

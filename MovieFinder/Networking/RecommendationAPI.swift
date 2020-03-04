@@ -19,10 +19,11 @@ class RecommendationAPI: APIManager {
         self.init(configuration: .default)
     }
     
-    func getFeed(from recommendationFeedType: RecommendationFeed, completion: @escaping(Result<RecommendationFeedResult?, Error>) -> Void) {
-        fetch(with: recommendationFeedType.request, decode: { json -> RecommendationFeedResult? in
-            guard let recommendationFeedResult = json as? RecommendationFeedResult else { return nil }
-            return recommendationFeedResult
+    func getFeed<T: Decodable>(from recommendationFeedType: RecommendationFeed, completion: @escaping (T?, Error?) -> () ) {
+        fetch(with: recommendationFeedType.request, decode: { json -> T in
+            let result = json as! T
+            return result
         }, completion: completion)
+            
     }
 }

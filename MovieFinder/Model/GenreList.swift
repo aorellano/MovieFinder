@@ -1,5 +1,5 @@
 //
-//  RecommendationFeedResult.swift
+//  GenreList.swift
 //  MovieFinder
 //
 //  Created by Alexis Orellano on 3/2/20.
@@ -8,6 +8,7 @@
 
 import UIKit
 
-struct RecommendationFeedResult<T: Decodable>: Decodable {
-    let genres: [T]
+struct GenreList: Decodable {
+    static var shared: [Genre]? = nil
+    var genres: [Genre]
 }

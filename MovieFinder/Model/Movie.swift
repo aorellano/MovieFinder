@@ -11,15 +11,15 @@ import UIKit
 struct Movie: Decodable {
     let id: Int
     let title: String
-    let overview: String
-    
-    var popularity: Double
-    var voteAverage: Double
-    
-    let backdropPath: String
-    let posterPath: String
-    var video: Bool
-    
-    let genreIds: [Int]
-    let voteCount: Int
+//    let overview: String
+//    
+//    var popularity: Double
+//    var voteAverage: Double
+//    
+//    let backdropPath: String
+//    let posterPath: String
+//    var video: Bool
+//    
+//    let genreIds: [Int]
+//    let voteCount: Int
 }

@@ -11,7 +11,7 @@ import UIKit
 final class RecommendationController: UIViewController {
     let recommendationView = RecommendationView()
     let manager = RecommendationAPI()
-    var genres: [Genre]?
+    //var genres: [Genre]?
     
 
     override func viewDidLoad() {
@@ -19,21 +19,19 @@ final class RecommendationController: UIViewController {
         
         setupTableView()
         
-//        manager.getFeed(from: .genre) { result in
-//            switch result {
-//            case .success(let recommendationFeedResult):
-//                if genres = genres {
-//                    
-//                }
-//                
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
-        
-        
-        
-        
+        manager.getFeed(from: .genre) { (list: GenreList?, error: Error?) in
+            if let error = error {
+                print(error)
+                return
+            } else {
+                DispatchQueue.main.async {
+                    if let list = list {
+                        print(list)
+                    }
+                }
+            }
+        }
+
     }
     
     
@@ -60,7 +58,7 @@ extension RecommendationController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! RecommendationCell
 //        print(genres[indexPath.row].name)
-//        cell.label.text = genres[indexPath.row].name
+       // cell.label.text = RecommendationFeedResult.shared![indexPath.row].name
         return cell
     }
     

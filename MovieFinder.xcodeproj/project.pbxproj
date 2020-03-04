@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		B34C663BCD8740D7AD431D82 /* Pods_MovieFinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B19952279EF4050BE7FB27 /* Pods_MovieFinder.framework */; };
 		D0138889240DD9E600EAA5F8 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0138888240DD9E600EAA5F8 /* Movie.swift */; };
-		D013888B240DE0E100EAA5F8 /* RecommendationFeedResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D013888A240DE0E100EAA5F8 /* RecommendationFeedResult.swift */; };
+		D013888D240DE80C00EAA5F8 /* GenreList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D013888C240DE80C00EAA5F8 /* GenreList.swift */; };
+		D013888F240DEA9F00EAA5F8 /* RecommendationFeedResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D013888E240DEA9F00EAA5F8 /* RecommendationFeedResult.swift */; };
 		D014A5AD2409993800D32235 /* RecommendationFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = D014A5AC2409993800D32235 /* RecommendationFeed.swift */; };
 		D014A5AF24099B6A00D32235 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D014A5AE24099B6A00D32235 /* APIManager.swift */; };
 		D014A5B52409C18400D32235 /* RecommendationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D014A5B42409C18400D32235 /* RecommendationAPI.swift */; };
@@ -40,7 +41,8 @@
 		798A604BAAED7568CD338030 /* Pods-MovieFinder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieFinder.debug.xcconfig"; path = "Target Support Files/Pods-MovieFinder/Pods-MovieFinder.debug.xcconfig"; sourceTree = "<group>"; };
 		99CE5284AF9A4D9126781EE4 /* Pods-MovieFinder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieFinder.release.xcconfig"; path = "Target Support Files/Pods-MovieFinder/Pods-MovieFinder.release.xcconfig"; sourceTree = "<group>"; };
 		D0138888240DD9E600EAA5F8 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
-		D013888A240DE0E100EAA5F8 /* RecommendationFeedResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationFeedResult.swift; sourceTree = "<group>"; };
+		D013888C240DE80C00EAA5F8 /* GenreList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreList.swift; sourceTree = "<group>"; };
+		D013888E240DEA9F00EAA5F8 /* RecommendationFeedResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationFeedResult.swift; sourceTree = "<group>"; };
 		D014A5AC2409993800D32235 /* RecommendationFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationFeed.swift; sourceTree = "<group>"; };
 		D014A5AE24099B6A00D32235 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		D014A5B42409C18400D32235 /* RecommendationAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationAPI.swift; sourceTree = "<group>"; };
@@ -136,9 +138,10 @@
 		D033410D240593EE0041721C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D03341192405AAFE0041721C /* Genre.swift */,
+				D013888E240DEA9F00EAA5F8 /* RecommendationFeedResult.swift */,
 				D0138888240DD9E600EAA5F8 /* Movie.swift */,
-				D013888A240DE0E100EAA5F8 /* RecommendationFeedResult.swift */,
+				D03341192405AAFE0041721C /* Genre.swift */,
+				D013888C240DE80C00EAA5F8 /* GenreList.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -227,8 +230,8 @@
 			isa = PBXGroup;
 			children = (
 				D014A5AC2409993800D32235 /* RecommendationFeed.swift */,
-				D014A5AE24099B6A00D32235 /* APIManager.swift */,
 				D033412A2406F29F0041721C /* Endpoint.swift */,
+				D014A5AE24099B6A00D32235 /* APIManager.swift */,
 				D014A5B42409C18400D32235 /* RecommendationAPI.swift */,
 			);
 			path = Networking;
@@ -402,14 +405,15 @@
 				D0612AA123D65E63000A568A /* LoginInputsContainerView.swift in Sources */,
 				D014A5AF24099B6A00D32235 /* APIManager.swift in Sources */,
 				D0218AB523C5599D0004931D /* Theme.swift in Sources */,
-				D013888B240DE0E100EAA5F8 /* RecommendationFeedResult.swift in Sources */,
 				D0218AC223C6A1770004931D /* RecommendationController.swift in Sources */,
 				D0AC2C1724022D5D006C9E39 /* RecommendationCell.swift in Sources */,
+				D013888F240DEA9F00EAA5F8 /* RecommendationFeedResult.swift in Sources */,
 				D033412B2406F29F0041721C /* Endpoint.swift in Sources */,
 				D0218ABE23C59BBB0004931D /* AuthenticationButton.swift in Sources */,
 				D0EE456C23C5400C0011B364 /* AppDelegate.swift in Sources */,
 				D033411A2405AAFE0041721C /* Genre.swift in Sources */,
 				D028AD0823CD893D009760F6 /* SettingsController.swift in Sources */,
+				D013888D240DE80C00EAA5F8 /* GenreList.swift in Sources */,
 				D014A5B52409C18400D32235 /* RecommendationAPI.swift in Sources */,
 				D0B06A7623ECBC0300D32807 /* CategoryCell.swift in Sources */,
 				D0218AB723C563E90004931D /* LoginView.swift in Sources */,
