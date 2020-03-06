@@ -10,8 +10,15 @@ import UIKit
 
 final class RecommendationController: UIViewController {
     let recommendationView = RecommendationView()
-    let manager = RecommendationAPI()
-    //var genres: [Genre]?
+    let manager = APIManager()
+    
+    var gens = [Genre]() {
+        didSet {
+            recommendationView.genreTableView.reloadData()
+            print(gens)
+        }
+    }
+
     
 
     override func viewDidLoad() {
@@ -19,18 +26,23 @@ final class RecommendationController: UIViewController {
         
         setupTableView()
         
-        manager.getFeed(from: .genre) { (list: GenreList?, error: Error?) in
+        
+        manager.fetchFeed(.genre) {(list: GenreList?, error: Error?) in
             if let error = error {
                 print(error)
                 return
             } else {
                 DispatchQueue.main.async {
                     if let list = list {
-                        print(list)
+                        var reducedList = [Genre]()
+                        reducedList = Array(list.genres)
+                        self.gens = reducedList
                     }
                 }
             }
+            
         }
+        
 
     }
     
@@ -52,7 +64,7 @@ final class RecommendationController: UIViewController {
 
 extension RecommendationController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return gens.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -63,7 +75,7 @@ extension RecommendationController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 90
     }
 
 }

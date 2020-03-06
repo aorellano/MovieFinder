@@ -1,5 +1,5 @@
 //
-//  APIManager.swift
+//  RecommendationAPI.swift
 //  MovieFinder
 //
 //  Created by Alexis Orellano on 2/28/20.
@@ -8,49 +8,51 @@
 
 import UIKit
 
-protocol APIManager {
-    var session: URLSession { get }
-    func fetch<T: Decodable>(with request: URLRequest, decode: @escaping(Decodable) -> T?, completion: @escaping(T?, Error?) -> ())
-}
-
-extension APIManager {
-
-    //This function will be the one in charge of parsing or rather decoding the JSON data, it takes a request as
-    //a parameter, the type of an object that conforms to Decodable and a completion handler, and it returns
-    //a URLSessionDataTask
-    fileprivate func decodingTask<T: Decodable>(with request: URLRequest, decodingType: T.Type, completion: @escaping (Decodable?, (Result<T, Error>)) -> Void) -> URLSessionDataTask {
+class APIManager {
+    
+    let session: URLSession
+    
+    init(configuration: URLSessionConfiguration) {
+        self.session = URLSession(configuration: configuration)
+    }
+    
+    convenience init() {
+        self.init(configuration: .default)
+    }
+    
+    func fetchFeed<T: Decodable>(_ feedType: RecommendationFeed, completion: @escaping (T?, Error?) -> ()) {
         
-        let task = session.dataTask(with: request) { data, response, error in
-            guard let httpResponse = response as? HTTPURLResponse else {
-                completion(nil, .failure(error!))
+        let task = session.dataTask(with: feedType.request) { data, response, error in
+            if let error = error {
+                completion(nil, error)
                 return
             }
             
-            if httpResponse.statusCode == 200 {
-                if let data = data {
-                    do {
-                        let genericModel = try JSONDecoder().decode(decodingType, from: data)
-                        completion(genericModel, .success(genericModel))
-                    } catch let jsonError {
-                        completion(nil, .failure(jsonError))
-                    }
+            if let httpResponse = response as? HTTPURLResponse {
+                switch (httpResponse.statusCode) {
+                case 400...499:
+                    completion(nil, error)
+                    return
+                case 500...599:
+                    completion(nil, error)
+                    return
+                default:
+                    break
                 }
             }
-        }
-        return task
-    }
-    
-    func fetch<T: Decodable>(with request: URLRequest, decode: @escaping (Decodable) -> T?, completion: @escaping (T?, Error?) -> ()) {
-        let task = decodingTask(with: request, decodingType: T.self) { (json, error) in
-            DispatchQueue.main.async {
-                if let value = decode(json!) {
-                    print(value)
-                }
+            
+            guard let data = data else {
+                completion(nil, error)
+                return
+            }
+            
+            do {
+                let model = try JSONDecoder().decode(T.self, from: data)
+                completion(model, nil)
+            } catch {
+                completion(nil, error)
             }
         }
         task.resume()
     }
 }
-
-
-

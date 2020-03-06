@@ -11,4 +11,8 @@ import UIKit
 struct GenreList: Decodable {
     static var shared: [Genre]? = nil
     var genres: [Genre]
+        
+    func setGenreListWith(list: GenreList) {
+        GenreList.shared = list.genres
+    }
 }

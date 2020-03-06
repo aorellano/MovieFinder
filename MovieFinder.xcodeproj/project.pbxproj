@@ -10,10 +10,9 @@
 		B34C663BCD8740D7AD431D82 /* Pods_MovieFinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B19952279EF4050BE7FB27 /* Pods_MovieFinder.framework */; };
 		D0138889240DD9E600EAA5F8 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0138888240DD9E600EAA5F8 /* Movie.swift */; };
 		D013888D240DE80C00EAA5F8 /* GenreList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D013888C240DE80C00EAA5F8 /* GenreList.swift */; };
-		D013888F240DEA9F00EAA5F8 /* RecommendationFeedResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D013888E240DEA9F00EAA5F8 /* RecommendationFeedResult.swift */; };
 		D014A5AD2409993800D32235 /* RecommendationFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = D014A5AC2409993800D32235 /* RecommendationFeed.swift */; };
-		D014A5AF24099B6A00D32235 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D014A5AE24099B6A00D32235 /* APIManager.swift */; };
-		D014A5B52409C18400D32235 /* RecommendationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D014A5B42409C18400D32235 /* RecommendationAPI.swift */; };
+		D014A5AF24099B6A00D32235 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D014A5AE24099B6A00D32235 /* APIClient.swift */; };
+		D014A5B52409C18400D32235 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D014A5B42409C18400D32235 /* APIManager.swift */; };
 		D0218AB523C5599D0004931D /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0218AB423C5599D0004931D /* Theme.swift */; };
 		D0218AB723C563E90004931D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0218AB623C563E90004931D /* LoginView.swift */; };
 		D0218ABA23C570ED0004931D /* AuthenticationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0218AB923C570ED0004931D /* AuthenticationTextField.swift */; };
@@ -42,10 +41,9 @@
 		99CE5284AF9A4D9126781EE4 /* Pods-MovieFinder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieFinder.release.xcconfig"; path = "Target Support Files/Pods-MovieFinder/Pods-MovieFinder.release.xcconfig"; sourceTree = "<group>"; };
 		D0138888240DD9E600EAA5F8 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		D013888C240DE80C00EAA5F8 /* GenreList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreList.swift; sourceTree = "<group>"; };
-		D013888E240DEA9F00EAA5F8 /* RecommendationFeedResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationFeedResult.swift; sourceTree = "<group>"; };
 		D014A5AC2409993800D32235 /* RecommendationFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationFeed.swift; sourceTree = "<group>"; };
-		D014A5AE24099B6A00D32235 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
-		D014A5B42409C18400D32235 /* RecommendationAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationAPI.swift; sourceTree = "<group>"; };
+		D014A5AE24099B6A00D32235 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		D014A5B42409C18400D32235 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		D0218AB423C5599D0004931D /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		D0218AB623C563E90004931D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		D0218AB923C570ED0004931D /* AuthenticationTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationTextField.swift; sourceTree = "<group>"; };
@@ -101,23 +99,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D0218AB123C5591B0004931D /* View */ = {
-			isa = PBXGroup;
-			children = (
-				D0B06A7523ECBC0300D32807 /* CategoryCell.swift */,
-			);
-			name = View;
-			path = ..;
-			sourceTree = "<group>";
-		};
-		D0218AB223C559220004931D /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				D028AD0723CD893D009760F6 /* SettingsController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
 		D0218AB323C5598A0004931D /* Constants */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,19 +107,9 @@
 			name = Constants;
 			sourceTree = "<group>";
 		};
-		D033410C240593D60041721C /* Recommendation */ = {
-			isa = PBXGroup;
-			children = (
-				D033410F240594010041721C /* Controller */,
-				D033410E240593F90041721C /* View */,
-			);
-			path = Recommendation;
-			sourceTree = "<group>";
-		};
 		D033410D240593EE0041721C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D013888E240DEA9F00EAA5F8 /* RecommendationFeedResult.swift */,
 				D0138888240DD9E600EAA5F8 /* Movie.swift */,
 				D03341192405AAFE0041721C /* Genre.swift */,
 				D013888C240DE80C00EAA5F8 /* GenreList.swift */,
@@ -146,41 +117,49 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		D033410E240593F90041721C /* View */ = {
+		D033412224062C070041721C /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				D014A5AC2409993800D32235 /* RecommendationFeed.swift */,
+				D033412A2406F29F0041721C /* Endpoint.swift */,
+				D014A5AE24099B6A00D32235 /* APIClient.swift */,
+				D014A5B42409C18400D32235 /* APIManager.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		D0556A52240F6FE3008FC9C9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D0556A57240F70D9008FC9C9 /* Search */,
+				D0556A56240F70C2008FC9C9 /* Settings */,
+				D0556A55240F7043008FC9C9 /* Login */,
+				D0556A54240F7019008FC9C9 /* Home */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D0556A53240F6FED008FC9C9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D0218AC123C6A1770004931D /* RecommendationController.swift */,
+				D0EE456F23C5400C0011B364 /* LoginController.swift */,
+				D028AD0723CD893D009760F6 /* SettingsController.swift */,
+				D0AC2C1223F9E614006C9E39 /* SearchController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D0556A54240F7019008FC9C9 /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				D0AC2C1423F9E77A006C9E39 /* RecommendationView.swift */,
 				D0AC2C1624022D5D006C9E39 /* RecommendationCell.swift */,
 			);
-			path = View;
+			path = Home;
 			sourceTree = "<group>";
 		};
-		D033410F240594010041721C /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				D0218AC123C6A1770004931D /* RecommendationController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		D0334110240594210041721C /* Authentication */ = {
-			isa = PBXGroup;
-			children = (
-				D03341142405946F0041721C /* View */,
-				D03341132405945F0041721C /* Controller */,
-			);
-			path = Authentication;
-			sourceTree = "<group>";
-		};
-		D03341132405945F0041721C /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				D0EE456F23C5400C0011B364 /* LoginController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		D03341142405946F0041721C /* View */ = {
+		D0556A55240F7043008FC9C9 /* Login */ = {
 			isa = PBXGroup;
 			children = (
 				D0218AB623C563E90004931D /* LoginView.swift */,
@@ -188,53 +167,24 @@
 				D0218AB923C570ED0004931D /* AuthenticationTextField.swift */,
 				D0218ABD23C59BBB0004931D /* AuthenticationButton.swift */,
 			);
-			path = View;
+			path = Login;
 			sourceTree = "<group>";
 		};
-		D0334115240596380041721C /* Search */ = {
+		D0556A56240F70C2008FC9C9 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				D0334118240596760041721C /* View */,
-				D03341172405966F0041721C /* Controller */,
-			);
-			path = Search;
-			sourceTree = "<group>";
-		};
-		D0334116240596420041721C /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				D0218AB123C5591B0004931D /* View */,
-				D0218AB223C559220004931D /* Controller */,
+				D0B06A7523ECBC0300D32807 /* CategoryCell.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		D03341172405966F0041721C /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				D0AC2C1223F9E614006C9E39 /* SearchController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		D0334118240596760041721C /* View */ = {
+		D0556A57240F70D9008FC9C9 /* Search */ = {
 			isa = PBXGroup;
 			children = (
 				D0612AA423D67121000A568A /* SearchView.swift */,
 				D0612AA223D670F7000A568A /* SearchFieldView.swift */,
 			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		D033412224062C070041721C /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-				D014A5AC2409993800D32235 /* RecommendationFeed.swift */,
-				D033412A2406F29F0041721C /* Endpoint.swift */,
-				D014A5AE24099B6A00D32235 /* APIManager.swift */,
-				D014A5B42409C18400D32235 /* RecommendationAPI.swift */,
-			);
-			path = Networking;
+			path = Search;
 			sourceTree = "<group>";
 		};
 		D0612AAA23D67DE7000A568A /* Extensions */ = {
@@ -265,14 +215,12 @@
 		D0EE456A23C5400C0011B364 /* MovieFinder */ = {
 			isa = PBXGroup;
 			children = (
-				D033412224062C070041721C /* Networking */,
+				D0556A53240F6FED008FC9C9 /* Controller */,
+				D0556A52240F6FE3008FC9C9 /* View */,
 				D033410D240593EE0041721C /* Model */,
+				D033412224062C070041721C /* Networking */,
 				D0218AB323C5598A0004931D /* Constants */,
 				D0612AAA23D67DE7000A568A /* Extensions */,
-				D0334110240594210041721C /* Authentication */,
-				D033410C240593D60041721C /* Recommendation */,
-				D0334115240596380041721C /* Search */,
-				D0334116240596420041721C /* Settings */,
 				D0EE456B23C5400C0011B364 /* AppDelegate.swift */,
 				D0218ABF23C5AC1D0004931D /* SceneDelegate.swift */,
 				D0EE457423C540120011B364 /* Assets.xcassets */,
@@ -403,18 +351,17 @@
 				D0218AC023C5AC1D0004931D /* SceneDelegate.swift in Sources */,
 				D0138889240DD9E600EAA5F8 /* Movie.swift in Sources */,
 				D0612AA123D65E63000A568A /* LoginInputsContainerView.swift in Sources */,
-				D014A5AF24099B6A00D32235 /* APIManager.swift in Sources */,
+				D014A5AF24099B6A00D32235 /* APIClient.swift in Sources */,
 				D0218AB523C5599D0004931D /* Theme.swift in Sources */,
 				D0218AC223C6A1770004931D /* RecommendationController.swift in Sources */,
 				D0AC2C1724022D5D006C9E39 /* RecommendationCell.swift in Sources */,
-				D013888F240DEA9F00EAA5F8 /* RecommendationFeedResult.swift in Sources */,
 				D033412B2406F29F0041721C /* Endpoint.swift in Sources */,
 				D0218ABE23C59BBB0004931D /* AuthenticationButton.swift in Sources */,
 				D0EE456C23C5400C0011B364 /* AppDelegate.swift in Sources */,
 				D033411A2405AAFE0041721C /* Genre.swift in Sources */,
 				D028AD0823CD893D009760F6 /* SettingsController.swift in Sources */,
 				D013888D240DE80C00EAA5F8 /* GenreList.swift in Sources */,
-				D014A5B52409C18400D32235 /* RecommendationAPI.swift in Sources */,
+				D014A5B52409C18400D32235 /* APIManager.swift in Sources */,
 				D0B06A7623ECBC0300D32807 /* CategoryCell.swift in Sources */,
 				D0218AB723C563E90004931D /* LoginView.swift in Sources */,
 				D0612AA523D67121000A568A /* SearchView.swift in Sources */,
