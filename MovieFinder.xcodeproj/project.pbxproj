@@ -508,6 +508,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 798A604BAAED7568CD338030 /* Pods-MovieFinder.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S7297N2DPU;
@@ -528,6 +529,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 99CE5284AF9A4D9126781EE4 /* Pods-MovieFinder.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S7297N2DPU;

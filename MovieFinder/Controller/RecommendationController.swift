@@ -11,14 +11,14 @@ import UIKit
 //List all
 
 final class RecommendationController: UIViewController {
-    //When a genre is chosen the tableview should be reloaded with a new
-    //set of genres
     let recommendationView = RecommendationView()
     let manager = APIManager()
-    
+    var cellTouches = 0
+   
     var genres = [Genre]() {
         didSet {
             recommendationView.genreTableView.reloadData()
+            recommendationView.genreTableView.scrollToRow(at: [0,0], at: .none, animated: true)
         }
     }
 
@@ -68,7 +68,8 @@ extension RecommendationController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! RecommendationCell
-        cell.label.text = genres[indexPath.row].name
+        let genresCapitilized = genres.map({$0.name.capitalized})
+        cell.label.text = genresCapitilized[indexPath.row]
         return cell
     }
     
@@ -77,38 +78,33 @@ extension RecommendationController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //fetch other genres
-        print("hi")
-        manager.fetchKeywords(.keyword, with: "mystery") { (list: KeywordList?, error: Error?) in
-            
-            if let error = error {
-                print(error)
-                return
-            } else {
-                 DispatchQueue.main.async {
-                    if let list = list {
-                        var reducedList = [Genre]()
-                        reducedList = Array(list.results)
-                        self.genres = reducedList
-                        
+        cellTouches += 1
+        if cellTouches == 1 {
+            let query = genres[indexPath.row].name
+            manager.fetchKeywords(.keyword, with: query) { (list: KeywordList?, error: Error?) in
+                if let error = error {
+                    print(error)
+                    return
+                } else {
+                     DispatchQueue.main.async {
+                        if let list = list {
+                            var reducedList = [Genre]()
+                            reducedList = Array(list.results)
+                            reducedList.removeAll(where: {$0.name.capitalized == query})
+                            self.genres = reducedList
+                        }
                     }
                 }
             }
-           
         }
-//        manager.fetchFeed(.keyword) { (list: GenreList?, error: Error?) in
-//            if let error = error {
-//                print(error)
-//                return
-//            } else {
-//                if let list = list {
-//                    var reducedList = [Genre]()
-//                    reducedList = Array(list.results)
-//                    self.genres = reducedList
-//                }
-//            }
-//
-//        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+
+        cell.alpha = 0
+        UIView.animate(withDuration: 0.25, delay: 0.04 * Double(indexPath.row), animations:  {
+            cell.alpha = 1
+        })
     }
 }
 

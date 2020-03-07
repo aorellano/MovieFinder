@@ -34,9 +34,6 @@ class SearchController: UIViewController, CLLocationManagerDelegate {
         checkIfUserIsLoggedIn()
         setupCollectionView()
         setupLocationManager()
-
-        
-
     }
     
     func setupLocationManager() {
