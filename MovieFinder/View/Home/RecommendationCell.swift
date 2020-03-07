@@ -9,17 +9,20 @@
 import UIKit
 
 class RecommendationCell: UITableViewCell {
+    
     let label: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .white
-        label.text = ""
+        label.textColor = UIColor.white
+        label.font = UIFont.tableViewTextFont
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         backgroundColor = UIColor.backgroundColor
+        self.selectionStyle = .none
         addLabel()
     }
     

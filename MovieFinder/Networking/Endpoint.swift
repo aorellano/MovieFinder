@@ -17,17 +17,16 @@ extension Endpoint {
     var apiKey: String {
         return "25d3b3b13927672472060f6f5971a50f"
     }
-    
+
     var urlComponents: URLComponents {
         let baseUrl = baseURL.appendingPathComponent(path)
         var components = URLComponents(url: baseUrl, resolvingAgainstBaseURL: true)!
         components.queryItems = [
             URLQueryItem(name: "api_key", value: apiKey),
-            URLQueryItem(name: "language", value: "en-US")
         ]
         return components
     }
-    
+
     var request: URLRequest {
         let url = urlComponents.url!
         return URLRequest(url: url)

@@ -22,7 +22,7 @@ class APIManager {
     
     func fetchFeed<T: Decodable>(_ feedType: RecommendationFeed, completion: @escaping (T?, Error?) -> ()) {
         
-        let task = session.dataTask(with: feedType.request) { data, response, error in
+        let task = session.dataTask(with: feedType.request) { data, response, error in  
             if let error = error {
                 completion(nil, error)
                 return
@@ -55,4 +55,48 @@ class APIManager {
         }
         task.resume()
     }
-}
+    
+    func fetchKeywords(_ feedType: RecommendationFeed, with query: String, completion: @escaping (KeywordList?, Error?) -> ()) {
+        
+        let url = (feedType.urlComponents.addQuery(query)).url
+        
+        
+        print(url)
+            
+        let task = session.dataTask(with: URLRequest(url: url!)) { data, response, error in
+                if let error = error {
+                    completion(nil, error)
+                    return
+                }
+                
+                if let httpResponse = response as? HTTPURLResponse {
+                    switch (httpResponse.statusCode) {
+                    case 400...499:
+                        completion(nil, error)
+                        return
+                    case 500...599:
+                        completion(nil, error)
+                        return
+                    default:
+                        break
+                    }
+                }
+                
+                guard let data = data else {
+                    completion(nil, error)
+                    return
+                }
+                
+                do {
+                    let model = try JSONDecoder().decode(KeywordList.self, from: data)
+                    completion(model, nil)
+                } catch {
+                    completion(nil, error)
+                }
+            }
+            task.resume()
+        }
+    }
+
+
+

@@ -24,6 +24,7 @@ class RecommendationView: UIView {
         let tableView = UITableView()
         tableView.register(RecommendationCell.self, forCellReuseIdentifier: "cellId")
         tableView.backgroundColor = UIColor.backgroundColor
+
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -46,7 +47,7 @@ class RecommendationView: UIView {
     func positionGenreTableView() {
         addSubview(genreTableView)
         
-        genreTableView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 40).isActive = true
+        genreTableView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 45).isActive = true
         genreTableView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         genreTableView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         genreTableView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
