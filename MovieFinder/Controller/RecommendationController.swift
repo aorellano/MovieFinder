@@ -96,6 +96,16 @@ extension RecommendationController: UITableViewDataSource, UITableViewDelegate {
                     }
                 }
             }
+            
+        } else {
+            let cell = tableView.cellForRow(at: indexPath) as! RecommendationCell
+            if cell.label.textColor == UIColor.highlightColor {
+                cell.label.textColor = UIColor.white
+            } else {
+                cell.label.textColor = UIColor.highlightColor
+            }
+            
+            
         }
     }
     
