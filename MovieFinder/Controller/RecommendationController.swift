@@ -101,8 +101,23 @@ extension RecommendationController: UITableViewDataSource, UITableViewDelegate {
             let cell = tableView.cellForRow(at: indexPath) as! RecommendationCell
             if cell.label.textColor == UIColor.highlightColor {
                 cell.label.textColor = UIColor.white
+                UIView.animate(withDuration: 0.10, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+                    cell.contentView.transform = CGAffineTransform(scaleX: 0.98, y: 0.98)
+                }) { finished in
+                    UIView.animate(withDuration: 1.0, animations: {
+                        cell.contentView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                    })
+                }
             } else {
                 cell.label.textColor = UIColor.highlightColor
+                UIView.animate(withDuration: 0.05, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0, options: .curveEaseIn, animations: {
+                    cell.contentView.transform = CGAffineTransform(scaleX: 1.02, y: 1.02)
+                }) { finished in
+                    UIView.animate(withDuration: 1.0, animations: {
+                        cell.contentView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                    })
+                }
+                
             }
             
             
