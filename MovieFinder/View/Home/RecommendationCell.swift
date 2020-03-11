@@ -9,6 +9,7 @@
 import UIKit
 
 class RecommendationCell: UITableViewCell {
+    var count = 0
     
     let label: UILabel = {
         let label = UILabel()
@@ -25,6 +26,7 @@ class RecommendationCell: UITableViewCell {
         self.selectionStyle = .none
         addLabel()
     }
+
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -43,6 +45,8 @@ class RecommendationCell: UITableViewCell {
         contentView.layer.masksToBounds = false
 
     }
+    
+    
     
     func addLabel() {
         contentView.addSubview(label)

@@ -14,6 +14,7 @@ final class RecommendationController: UIViewController {
     let recommendationView = RecommendationView()
     let manager = APIManager()
     var cellTouches = 0
+    var highlightedTouches = 0
    
     var genres = [Genre]() {
         didSet {
@@ -70,12 +71,19 @@ extension RecommendationController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! RecommendationCell
         let genresCapitilized = genres.map({$0.name.capitalized})
         cell.label.text = genresCapitilized[indexPath.row]
+        
+        
+    
         return cell
     }
+    
+    
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90
     }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         cellTouches += 1
@@ -96,35 +104,36 @@ extension RecommendationController: UITableViewDataSource, UITableViewDelegate {
                     }
                 }
             }
-            
         } else {
             let cell = tableView.cellForRow(at: indexPath) as! RecommendationCell
-            if cell.label.textColor == UIColor.highlightColor {
-                cell.label.textColor = UIColor.white
-                UIView.animate(withDuration: 0.10, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
-                    cell.contentView.transform = CGAffineTransform(scaleX: 0.98, y: 0.98)
-                }) { finished in
-                    UIView.animate(withDuration: 1.0, animations: {
-                        cell.contentView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-                    })
-                }
-            } else {
-                cell.label.textColor = UIColor.highlightColor
-                UIView.animate(withDuration: 0.05, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0, options: .curveEaseIn, animations: {
+            cell.label.textColor = UIColor.highlightColor
+            UIView.animate(withDuration: 0.05, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0, options: .curveEaseIn, animations: {
                     cell.contentView.transform = CGAffineTransform(scaleX: 1.02, y: 1.02)
-                }) { finished in
-                    UIView.animate(withDuration: 1.0, animations: {
-                        cell.contentView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-                    })
-                }
-                
+            }) { finished in
+                UIView.animate(withDuration: 1.0, animations: {
+                    cell.contentView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                })
             }
-            
-            
+        }
+    }
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+         let cell = tableView.cellForRow(at: indexPath) as! RecommendationCell
+        cell.label.textColor = .white
+        UIView.animate(withDuration: 0.10, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+                cell.contentView.transform = CGAffineTransform(scaleX: 0.98, y: 0.98)
+        }) { finished in
+            UIView.animate(withDuration: 1.0, animations: {
+                cell.contentView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            })
         }
     }
     
+    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        let cell = cell as! RecommendationCell
+        
+        cell.label.textColor = cell.isSelected ? UIColor.highlightColor : UIColor.white
 
         cell.alpha = 0
         UIView.animate(withDuration: 0.25, delay: 0.04 * Double(indexPath.row), animations:  {

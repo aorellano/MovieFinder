@@ -24,7 +24,7 @@ class RecommendationView: UIView {
         let tableView = UITableView()
         tableView.register(RecommendationCell.self, forCellReuseIdentifier: "cellId")
         tableView.backgroundColor = UIColor.backgroundColor
-
+        tableView.allowsMultipleSelection = true
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
