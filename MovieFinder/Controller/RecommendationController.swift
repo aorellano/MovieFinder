@@ -60,6 +60,7 @@ final class RecommendationController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
+        recommendationView.selectButton.isHidden = true
     }
 }
 
@@ -96,7 +97,9 @@ extension RecommendationController: UITableViewDataSource, UITableViewDelegate {
                     print(error)
                     return
                 } else {
+                    
                      DispatchQueue.main.async {
+                        self.recommendationView.selectButton.isHidden = false
                         if let list = list {
                             var reducedList = [Genre]()
                             reducedList = Array(list.results)
@@ -119,6 +122,7 @@ extension RecommendationController: UITableViewDataSource, UITableViewDelegate {
         }
         keywords.append(cell.label.text!)
         print(keywords)
+        recommendationView.selectButton.setTitle("Select (\(keywords.count-1))", for: .normal)
     }
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! RecommendationCell
@@ -132,6 +136,7 @@ extension RecommendationController: UITableViewDataSource, UITableViewDelegate {
         }
         keywords.removeAll(where: {$0 == cell.label.text})
         print(keywords)
+        recommendationView.selectButton.setTitle("Select (\(keywords.count-1))", for: .normal)
         
         
     }
