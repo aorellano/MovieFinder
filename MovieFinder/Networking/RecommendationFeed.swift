@@ -14,6 +14,7 @@ enum RecommendationFeed: String {
     case popular
     case genre
     case keyword
+    case search
 }
 
 extension RecommendationFeed: Endpoint {
@@ -28,6 +29,7 @@ extension RecommendationFeed: Endpoint {
         case .popular: return "movie/popular"
         case .genre: return "genre/movie/list"
         case .keyword: return "search/keyword"
+        case .search: return "search/movie"
         }
     }
     

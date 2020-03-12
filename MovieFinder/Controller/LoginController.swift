@@ -38,7 +38,7 @@ class LoginController: UIViewController {
             if error != nil {
                 print(error)
             }
-            let homeVC = SearchController()
+            let homeVC = RecommendationController()
             self.navigationController?.pushViewController(homeVC, animated: true)
         })
     }
@@ -65,7 +65,7 @@ class LoginController: UIViewController {
                     print(error as Any)
                     return
                 }
-                let homeVC = SearchController()
+                let homeVC = RecommendationController()
                 self.navigationController?.pushViewController(homeVC, animated: true)
             })
         })

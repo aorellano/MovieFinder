@@ -8,18 +8,21 @@
 
 import UIKit
 
-struct Movie: Decodable {
-    let id: Int
+struct Movie: Decodable, Equatable, Hashable  {
+    let popularity: Double
+    let vote_count: Int
+    let video: Bool
+    let poster_path: String?
+    let adult: Bool
+    let backdrop_path: String?
+    let original_language: String
+    let original_title: String
+    let genre_ids: [Int]
     let title: String
-//    let overview: String
-//    
-//    var popularity: Double
-//    var voteAverage: Double
-//    
-//    let backdropPath: String
-//    let posterPath: String
-//    var video: Bool
-//    
-//    let genreIds: [Int]
-//    let voteCount: Int
+    let overview: String
+    let release_date: String
+    
+    static func ==(lhs: Movie, rhs: Movie) -> Bool {
+        return lhs.title == rhs.title
+    }
 }

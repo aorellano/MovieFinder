@@ -1,159 +1,158 @@
 //
-//  SignUpController.swift
+//  SearchController.swift
 //  MovieFinder
 //
-//  Created by Alexis Orellano on 1/8/20.
+//  Created by Alexis Orellano on 2/16/20.
 //  Copyright © 2020 Alexis Orellano. All rights reserved.
 //
 
 import UIKit
+import Firebase
+import CoreLocation
 
-//List all
-
-final class RecommendationController: UIViewController {
+class RecommendationController: UIViewController, CLLocationManagerDelegate {
     let recommendationView = RecommendationView()
-    let manager = APIManager()
-    var cellTouches = 0
-    var highlightedTouches = 0
-    var keywords = [String]()
-   
-    var genres = [Genre]() {
-        didSet {
-            recommendationView.genreTableView.reloadData()
-            recommendationView.genreTableView.scrollToRow(at: [0,0], at: .none, animated: true)
-        }
-    }
+    
+    let locationManager = CLLocationManager()
+    
+    private let cellId = "cellId"
+
+    let movieCollectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        collectionView.backgroundColor = UIColor.backgroundColor
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        return collectionView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupTableView()
-        fetchData()
+        movieCollectionView.register(CategoryCell.self, forCellWithReuseIdentifier: cellId)
+
+        movieCollectionView.delegate = self
+        movieCollectionView.dataSource = self
+
+        checkIfUserIsLoggedIn()
+        setupCollectionView()
+        setupLocationManager()
     }
     
-    func fetchData() {
-        manager.fetchFeed(.genre) {(list: GenreList?, error: Error?) in
-            if let error = error {
-                print(error)
-                return
-            } else {
-                DispatchQueue.main.async {
-                    if let list = list {
-                        var reducedList = [Genre]()
-                        reducedList = Array(list.genres)
-                        self.genres = reducedList
-                    }
-                }
+    func setupLocationManager() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+    }
+     
+    fileprivate func fetchGenericData<T: Decodable>(urlString:String, completion: @escaping (T) -> ()) {
+        let url = URL(string: urlString)
+        URLSession.shared.dataTask(with: url!) { (data, resp, err) in
+            guard let data = data else { return }
+            
+            do {
+                let obj = try JSONDecoder().decode(T.self, from: data)
+                completion(obj)
+            }catch let jsonErr {
+                print("Failed to decode json:", jsonErr)
             }
+        }.resume()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         }
     }
-    
-    private func setupTableView() {
-        recommendationView.genreTableView.dataSource = self
-        recommendationView.genreTableView.delegate = self
+
+    func checkIfUserIsLoggedIn() {
+        if Auth.auth().currentUser?.uid == nil {
+            perform(#selector(handleLogout), with: nil, afterDelay: 0)
+        } else {
+            let uid = Auth.auth().currentUser?.uid
+            Database.database().reference().child("users").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
+
+                if let dictionary = snapshot.value as? [String: AnyObject] {
+                    guard let name = (dictionary["name"] as? String)?.components(separatedBy: [" "]) else {
+                        return
+                    }
+                    let nameInitials = String(name.compactMap({$0.first}))
+                    self.recommendationView.accountNameLabel.text = nameInitials
+                }
+            }, withCancel: nil)
+        }
     }
-    
+
+    func setupCollectionView() {
+        view.addSubview(movieCollectionView)
+
+        movieCollectionView.topAnchor.constraint(equalTo: recommendationView.searchFieldView.bottomAnchor, constant: 20).isActive = true
+        movieCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        movieCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
+        movieCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+    }
+
+    @objc func accountNameButtonPressed() {
+        let settingsVC = SettingsController()
+        navigationController?.pushViewController(settingsVC, animated: true)
+    }
+
+    @objc func handleLogout() {
+        do {
+            try Auth.auth().signOut()
+        } catch let logoutError {
+            print(logoutError)
+        }
+
+        let loginController = LoginController()
+        navigationController?.pushViewController(loginController, animated: false)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        
+    }
 
     override func loadView() {
         view = recommendationView
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.isHidden = true
-        recommendationView.selectButton.isHidden = true
-    }
 }
 
-extension RecommendationController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return genres.count
+extension RecommendationController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: (movieCollectionView.bounds.width/2.3), height: 250)
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! RecommendationCell
-        let genresCapitilized = genres.map({$0.name.capitalized})
-        cell.label.text = genresCapitilized[indexPath.row]
-        
-        
-    
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 8
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = movieCollectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CategoryCell
+        cell.backgroundColor = UIColor.tintColor
         return cell
     }
-    
-    
-    
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
-    }
-    
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as! RecommendationCell
-        cellTouches += 1
-        if cellTouches == 1 {
-            let query = genres[indexPath.row].name
-            manager.fetchKeywords(.keyword, with: query) { (list: KeywordList?, error: Error?) in
-                if let error = error {
-                    print(error)
-                    return
-                } else {
-                    
-                     DispatchQueue.main.async {
-                        self.recommendationView.selectButton.isHidden = false
-                        if let list = list {
-                            var reducedList = [Genre]()
-                            reducedList = Array(list.results)
-                            reducedList.removeAll(where: {$0.name.capitalized == query})
-                            self.genres = reducedList
-                        }
-                    }
-                }
-            }
-        } else {
-           
-            cell.label.textColor = UIColor.highlightColor
-            UIView.animate(withDuration: 0.05, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0, options: .curveEaseIn, animations: {
-                    cell.contentView.transform = CGAffineTransform(scaleX: 1.02, y: 1.02)
-            }) { finished in
-                UIView.animate(withDuration: 1.0, animations: {
-                    cell.contentView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-                })
-            }
-        }
-        keywords.append(cell.label.text!)
-        print(keywords)
-        recommendationView.selectButton.setTitle("Select (\(keywords.count-1))", for: .normal)
-    }
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as! RecommendationCell
-        cell.label.textColor = .white
-        UIView.animate(withDuration: 0.10, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
-                cell.contentView.transform = CGAffineTransform(scaleX: 0.98, y: 0.98)
-        }) { finished in
-            UIView.animate(withDuration: 1.0, animations: {
-                cell.contentView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-            })
-        }
-        keywords.removeAll(where: {$0 == cell.label.text})
-        print(keywords)
-        recommendationView.selectButton.setTitle("Select (\(keywords.count-1))", for: .normal)
-        
-        
-    }
-    
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
-        let cell = cell as! RecommendationCell
-        
-        cell.label.textColor = cell.isSelected ? UIColor.highlightColor : UIColor.white
 
-        cell.alpha = 0
-        UIView.animate(withDuration: 0.25, delay: 0.04 * Double(indexPath.row), animations:  {
-            cell.alpha = 1
-        })
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> CGSize   {
+        let width = collectionView.frame.width / 2 - 10
+        return CGSize(width: width, height: width * 1.4 + 30)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 15
     }
 }
 
+struct NowPlaying: Decodable {
+    let id:Int
+    let name:String
+}
 
+
+struct HomeFeed: Decodable {
+    let genres: [NowPlaying]
+}
 

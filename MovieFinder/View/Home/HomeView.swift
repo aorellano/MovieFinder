@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RecommendationView: UIView {
+class HomeView: UIView {
     let headerLabel: UILabel = {
         let label = UILabel()
         label.text = "What do you feel like watching today?"
@@ -36,7 +36,7 @@ class RecommendationView: UIView {
         button.backgroundColor = UIColor.tintColor
         button.layer.cornerRadius = 10
         button.setTitle("Select", for: .normal)
-        
+        button.addTarget(self, action: #selector(HomeController.keywordsSelected), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()

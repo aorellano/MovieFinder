@@ -56,7 +56,7 @@ class APIManager {
         task.resume()
     }
     
-    func fetchKeywords(_ feedType: RecommendationFeed, with query: String, completion: @escaping (KeywordList?, Error?) -> ()) {
+    func fetchKeywords<T: Decodable>(_ feedType: RecommendationFeed, with query: String, completion: @escaping (T?, Error?) -> ()) {
         
         let url = (feedType.urlComponents.addQuery(query)).url
         
@@ -88,7 +88,7 @@ class APIManager {
                 }
                 
                 do {
-                    let model = try JSONDecoder().decode(KeywordList.self, from: data)
+                    let model = try JSONDecoder().decode(T.self, from: data)
                     completion(model, nil)
                 } catch {
                     completion(nil, error)

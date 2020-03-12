@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchView: UIView {
+class RecommendationView: UIView {
     var stringAttributes: [NSAttributedString.Key: Any]!
 
     let accountNameLabel: UILabel = {

@@ -8,7 +8,11 @@
 
 import UIKit
 
-struct Genre: Decodable {
+struct Genre: Decodable, Hashable, Equatable {
     let id: Int
     let name: String
+    
+    static func ==(lhs: Genre, rhs: Genre) -> Bool {
+        return lhs.name == rhs.name
+    }
 }
