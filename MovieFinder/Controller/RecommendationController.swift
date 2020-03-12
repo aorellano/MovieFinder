@@ -15,6 +15,7 @@ final class RecommendationController: UIViewController {
     let manager = APIManager()
     var cellTouches = 0
     var highlightedTouches = 0
+    var keywords = [String]()
    
     var genres = [Genre]() {
         didSet {
@@ -86,6 +87,7 @@ extension RecommendationController: UITableViewDataSource, UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! RecommendationCell
         cellTouches += 1
         if cellTouches == 1 {
             let query = genres[indexPath.row].name
@@ -105,7 +107,7 @@ extension RecommendationController: UITableViewDataSource, UITableViewDelegate {
                 }
             }
         } else {
-            let cell = tableView.cellForRow(at: indexPath) as! RecommendationCell
+           
             cell.label.textColor = UIColor.highlightColor
             UIView.animate(withDuration: 0.05, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0, options: .curveEaseIn, animations: {
                     cell.contentView.transform = CGAffineTransform(scaleX: 1.02, y: 1.02)
@@ -115,9 +117,11 @@ extension RecommendationController: UITableViewDataSource, UITableViewDelegate {
                 })
             }
         }
+        keywords.append(cell.label.text!)
+        print(keywords)
     }
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-         let cell = tableView.cellForRow(at: indexPath) as! RecommendationCell
+        let cell = tableView.cellForRow(at: indexPath) as! RecommendationCell
         cell.label.textColor = .white
         UIView.animate(withDuration: 0.10, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
                 cell.contentView.transform = CGAffineTransform(scaleX: 0.98, y: 0.98)
@@ -126,6 +130,10 @@ extension RecommendationController: UITableViewDataSource, UITableViewDelegate {
                 cell.contentView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
             })
         }
+        keywords.removeAll(where: {$0 == cell.label.text})
+        print(keywords)
+        
+        
     }
     
     
