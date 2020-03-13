@@ -21,4 +21,6 @@ extension UIFont {
     static let titleFont = UIFont(name: "HelveticaNeue-Bold", size: 40)
     static let secondaryTitleFont = UIFont(name: "HelveticaNeue-Bold", size: 30)
     static let tableViewTextFont = UIFont(name: "HelveticaNeue-Bold", size: 20)
+    static let collectionViewFont = UIFont(name: "HelveticaNeue-Bold", size: 16)
+    
 }

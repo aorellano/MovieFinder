@@ -13,6 +13,13 @@ import CoreLocation
 class RecommendationController: UIViewController, CLLocationManagerDelegate {
     let recommendationView = RecommendationView()
     
+    var movies = [Movie]() {
+        didSet {
+            print(movies.count)
+            movieCollectionView.reloadData()
+        }
+    }
+    
     let locationManager = CLLocationManager()
     
     private let cellId = "cellId"
@@ -26,7 +33,7 @@ class RecommendationController: UIViewController, CLLocationManagerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        movieCollectionView.register(CategoryCell.self, forCellWithReuseIdentifier: cellId)
+        movieCollectionView.register(MovieCell.self, forCellWithReuseIdentifier: cellId)
 
         movieCollectionView.delegate = self
         movieCollectionView.dataSource = self
@@ -74,8 +81,8 @@ class RecommendationController: UIViewController, CLLocationManagerDelegate {
                     guard let name = (dictionary["name"] as? String)?.components(separatedBy: [" "]) else {
                         return
                     }
-                    let nameInitials = String(name.compactMap({$0.first}))
-                    self.recommendationView.accountNameLabel.text = nameInitials
+                    //let nameInitials = String(name.compactMap({$0.first}))
+                    //self.recommendationView.accountNameLabel.text = nameInitials
                 }
             }, withCancel: nil)
         }
@@ -84,7 +91,7 @@ class RecommendationController: UIViewController, CLLocationManagerDelegate {
     func setupCollectionView() {
         view.addSubview(movieCollectionView)
 
-        movieCollectionView.topAnchor.constraint(equalTo: recommendationView.searchFieldView.bottomAnchor, constant: 20).isActive = true
+        movieCollectionView.topAnchor.constraint(equalTo: recommendationView.headerLabel.bottomAnchor, constant: 30).isActive = true
         movieCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         movieCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
         movieCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
@@ -119,26 +126,27 @@ class RecommendationController: UIViewController, CLLocationManagerDelegate {
 
 extension RecommendationController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (movieCollectionView.bounds.width/2.3), height: 250)
+        return CGSize(width: (movieCollectionView.bounds.width/2.1), height: 250)
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        return movies.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = movieCollectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CategoryCell
-        cell.backgroundColor = UIColor.tintColor
+        let cell = movieCollectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! MovieCell
+        let movie = movies[indexPath.row]
+        cell.setupCell(movie: movie)
+        
         return cell
     }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> CGSize   {
-        let width = collectionView.frame.width / 2 - 10
-        return CGSize(width: width, height: width * 1.4 + 30)
-    }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
+        return 15
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -146,13 +154,4 @@ extension RecommendationController: UICollectionViewDelegate, UICollectionViewDa
     }
 }
 
-struct NowPlaying: Decodable {
-    let id:Int
-    let name:String
-}
-
-
-struct HomeFeed: Decodable {
-    let genres: [NowPlaying]
-}
 

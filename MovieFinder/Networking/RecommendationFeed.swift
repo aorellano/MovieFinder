@@ -32,6 +32,21 @@ extension RecommendationFeed: Endpoint {
         case .search: return "search/movie"
         }
     }
+}
+
+enum ImageType: String {
+    case poster
+    case backdrop
+    case castImage
     
-    
+    var rawValue: String {
+        switch self {
+        case .poster:
+            return "http://image.tmdb.org/t/p/w185"
+        case .castImage:
+            return "http://image.tmdb.org/t/p/w45"
+        default:
+            return "http://image.tmdb.org/t/p/w780"
+        }
+    }
 }

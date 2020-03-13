@@ -16,9 +16,14 @@ final class HomeController: UIViewController {
     var cellTouches = 0
     var highlightedTouches = 0
     var keywords = [String]()
+    let recommendationVC = RecommendationController()
     var results = [Movie]() {
         didSet {
             print(results.count)
+            results.sort { (movie1, movie2) -> Bool in
+                return movie1.popularity > movie2.popularity
+            }
+            recommendationVC.movies = results
         }
     }
     var more = [Movie]()
@@ -94,7 +99,7 @@ final class HomeController: UIViewController {
                 }
             }
         }
-        let recommendationVC = RecommendationController()
+      
         self.navigationController?.pushViewController(recommendationVC, animated: true)
     }
 }
@@ -155,9 +160,10 @@ extension HomeController: UITableViewDataSource, UITableViewDelegate {
                     cell.contentView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
                 })
             }
+            keywords.append(cell.label.text!)
         }
-        keywords.append(cell.label.text!)
-        homeView.selectButton.setTitle("Select (\(keywords.count-1))", for: .normal)
+        
+        homeView.selectButton.setTitle("Select (\(keywords.count))", for: .normal)
     }
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! RecommendationCell
