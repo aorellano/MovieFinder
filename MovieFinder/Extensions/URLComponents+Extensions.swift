@@ -13,7 +13,16 @@ extension URLComponents {
     func addQuery(_ query: String) -> URLComponents {
         var componentsWithQuery = self
         
-        componentsWithQuery.queryItems?.append(URLQueryItem(name: "query", value: query))
+        if Int(query) != nil {
+            componentsWithQuery.queryItems?.append(URLQueryItem(name: "keyword_id", value: query))
+        } else {
+            componentsWithQuery.queryItems?.append(URLQueryItem(name: "query", value: query))
+        }
+        
+        
+        
+
+        
 
         return componentsWithQuery
     }

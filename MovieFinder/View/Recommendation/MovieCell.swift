@@ -10,20 +10,34 @@ import UIKit
 
 class MovieCell: UICollectionViewCell {
     
-    var moviePoster: UIImageView = {
-        let poster = UIImageView()
-        poster.backgroundColor = .white
-        poster.layer.cornerRadius = 10
-        poster.translatesAutoresizingMaskIntoConstraints = false
-        return poster
+    var movieContainer: UIView = {
+        let container = UIView()
+        container.backgroundColor = UIColor.backgroundColor
+        container.layer.cornerRadius = 10
+        container.layer.masksToBounds = true
+        container.translatesAutoresizingMaskIntoConstraints = false
+        return container
     }()
+    
+    
+    var movieImage: ScaleImageView = {
+        let imageView = ScaleImageView(frame: .zero)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = #imageLiteral(resourceName: "NoImage")
+        imageView.backgroundColor = UIColor.clear
+        imageView.contentMode = .scaleAspectFit
+        imageView.layer.cornerRadius = 15
+        imageView.layer.masksToBounds = true
+        imageView.backgroundColor = UIColor.backgroundColor
+        return imageView
+      }()
     
     var movieTitle: UILabel = {
         let label = UILabel()
         label.text = "Movie Title"
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
-        label.textColor = .white
+        label.textColor = .clear
         label.font = UIFont.collectionViewFont
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -32,6 +46,7 @@ class MovieCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.backgroundColor
+        self.layer.cornerRadius = 15
         
         setupMovieTitle()
         setupMoviePoster()
@@ -39,12 +54,30 @@ class MovieCell: UICollectionViewCell {
     }
     
     func setupMoviePoster() {
-        addSubview(moviePoster)
+        addSubview(movieContainer)
         
-        moviePoster.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        moviePoster.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        moviePoster.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        moviePoster.bottomAnchor.constraint(equalTo: movieTitle.topAnchor, constant: -5).isActive = true
+        
+        movieContainer.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
+        movieContainer.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
+        movieContainer.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
+        movieContainer.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
+        
+        movieContainer.addSubview(movieImage)
+        
+        movieImage.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        
+        movieImage.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 10).isActive = true
+        
+        movieImage.topAnchor.constraint(equalTo: self.topAnchor, constant: -5).isActive = true
+        movieImage.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 5).isActive = true
+//        movieImage.setContentCompressionResistancePriority(UILayoutPriority(1000), for: .vertical)
+//        NSLayoutConstraint.activate([
+//            movieImage.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
+//            movieImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+//            movieImage.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
+//            movieImage.bottomAnchor.constraint(equalTo: movieTitle.topAnchor, constant: -5)
+//            ])
+    
     }
     
     func setupMovieTitle() {
@@ -57,7 +90,8 @@ class MovieCell: UICollectionViewCell {
     
     func setupCell(movie: Movie) {
         let posterPath = movie.poster_path ?? ""
-        moviePoster.downloadImage(imageType: .poster, path: posterPath)
+        print("HIIIIII\(movie.poster_path)")
+        movieImage.downloadImage(imageType: .poster, path: posterPath)
         movieTitle.text = movie.title
     }
     

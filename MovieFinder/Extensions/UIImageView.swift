@@ -9,6 +9,48 @@
 
 import UIKit
 
+extension ScaleImageView {
+    
+    static var cache: [URL: UIImage] = [:]
+    
+    func downloadImage(imageType: ImageType, path: String) {
+        let defaultImage = #imageLiteral(resourceName: "NoImage")
+        guard let url = URL(string: imageType.rawValue + path) else {
+            print("failed url")
+            self.image = defaultImage
+            return
+        }
+        // save url to check against cache
+        self.url = url
+        print("YOOOOOO\(url)")
+        // check if imaged was cached already
+        if let image = ScaleImageView.cache[url] {
+            self.image = image
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: url) { [ weak self ] data, response, error in
+            
+            if let imageData = data, let img = UIImage(data: imageData) {
+                DispatchQueue.main.async {
+                    if img.size.width > 500 {
+                        print("Big image!")
+                    }
+                    // set cache
+                    ScaleImageView.cache[url] = img
+                    
+                    if self?.url == url {
+                        self?.image = img
+                    }
+                    return
+                }
+            }
+        }
+        task.resume()
+    }
+}
+
+// MARK - to set appropriate star (color) for movie rating
 extension UIImageView {
     static var cache: [URL: UIImage] = [:]
     
@@ -23,7 +65,7 @@ extension UIImageView {
     }
     
     func downloadImage(imageType: ImageType, path: String) {
-        let defaultImage = #imageLiteral(resourceName: "LocationSymbol")
+        let defaultImage = #imageLiteral(resourceName: "NoImage")
         guard let url = URL(string: imageType.rawValue + path) else {
             print("failed url")
             self.image = defaultImage

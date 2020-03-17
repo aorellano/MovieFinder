@@ -77,7 +77,7 @@ final class HomeController: UIViewController {
     
     @objc func keywordsSelected() {
         for i in keywords.indices {
-            manager.fetchKeywords(.search, with: keywords[i]) { (list: MovieList?, error: Error?) in
+            manager.fetchKeywords(.recommendation, with: keywords[i]) { (list: MovieList?, error: Error?) in
                 if let error = error {
                     print(error)
                     return
@@ -160,7 +160,7 @@ extension HomeController: UITableViewDataSource, UITableViewDelegate {
                     cell.contentView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
                 })
             }
-            keywords.append(cell.label.text!)
+            keywords.append(String(genres[indexPath.row].id))
         }
         
         homeView.selectButton.setTitle("Select (\(keywords.count))", for: .normal)
@@ -175,7 +175,7 @@ extension HomeController: UITableViewDataSource, UITableViewDelegate {
                 cell.contentView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
             })
         }
-        keywords.removeAll(where: {$0 == cell.label.text})
+        keywords.removeAll(where: {$0 == String(genres[indexPath.row].id)})
         homeView.selectButton.setTitle("Select (\(keywords.count-1))", for: .normal)
         
         

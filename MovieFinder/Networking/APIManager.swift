@@ -57,12 +57,12 @@ class APIManager {
     }
     
     func fetchKeywords<T: Decodable>(_ feedType: RecommendationFeed, with query: String, completion: @escaping (T?, Error?) -> ()) {
-        
-        let url = (feedType.urlComponents.addQuery(query)).url
-        
-        
-        print(url)
-            
+        let url: URL!
+        if Int(query) != nil {
+            url = URLComponents(string: "https://api.themoviedb.org/3/keyword/\(query)/movies?api_key=25d3b3b13927672472060f6f5971a50f")?.url
+        } else {
+            url = (feedType.urlComponents.addQuery(query)).url
+        }
         let task = session.dataTask(with: URLRequest(url: url!)) { data, response, error in
                 if let error = error {
                     completion(nil, error)
