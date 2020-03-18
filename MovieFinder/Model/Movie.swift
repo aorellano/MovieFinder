@@ -10,6 +10,7 @@ import UIKit
 
 struct Movie: Decodable, Equatable, Hashable  {
     let popularity: Double
+    let id: Int
     let vote_count: Int
     let video: Bool
     let poster_path: String?

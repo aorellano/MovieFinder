@@ -70,13 +70,6 @@ class MovieCell: UICollectionViewCell {
         
         movieImage.topAnchor.constraint(equalTo: self.topAnchor, constant: -5).isActive = true
         movieImage.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 5).isActive = true
-//        movieImage.setContentCompressionResistancePriority(UILayoutPriority(1000), for: .vertical)
-//        NSLayoutConstraint.activate([
-//            movieImage.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
-//            movieImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-//            movieImage.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
-//            movieImage.bottomAnchor.constraint(equalTo: movieTitle.topAnchor, constant: -5)
-//            ])
     
     }
     

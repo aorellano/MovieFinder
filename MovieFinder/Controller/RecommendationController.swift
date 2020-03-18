@@ -152,6 +152,13 @@ extension RecommendationController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 15
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let movieVC = MovieController()
+        movieVC.movieId = movies[indexPath.row].id
+        
+        navigationController?.pushViewController(movieVC, animated: true)
+    }
 }
 
 
