@@ -24,7 +24,7 @@ class MovieCell: UICollectionViewCell {
         let imageView = ScaleImageView(frame: .zero)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = #imageLiteral(resourceName: "NoImage")
-        imageView.backgroundColor = UIColor.clear
+ 
         imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = 15
         imageView.layer.masksToBounds = true
@@ -83,7 +83,7 @@ class MovieCell: UICollectionViewCell {
     
     func setupCell(movie: Movie) {
         let posterPath = movie.poster_path ?? ""
-        print("HIIIIII\(movie.poster_path)")
+      
         movieImage.downloadImage(imageType: .poster, path: posterPath)
         movieTitle.text = movie.title
     }

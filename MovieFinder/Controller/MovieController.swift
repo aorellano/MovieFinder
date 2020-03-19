@@ -10,15 +10,28 @@ import UIKit
 
 class MovieController: UIViewController {
     var movieId: Int!
+    var movie: Movie!
+
     let movieView = MovieView()
+    
+    var backdropPoster: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         
-        print(movieId)
+        movieView.moviePoster.downloadImage(imageType: .backdrop, path: backdropPoster)
+        movieView.movieTitle.text = movie.title
+        movieView.movieDescription.text = movie.overview
+        movieView.movieRatingLabel.text = "\(String(movie.vote_average))/10"
+       
     }
+    
+    
     
     override func loadView() {
         view = movieView
+        
+        
     }
 }

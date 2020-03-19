@@ -156,7 +156,10 @@ extension RecommendationController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let movieVC = MovieController()
         movieVC.movieId = movies[indexPath.row].id
+        movieVC.movie = movies[indexPath.row]
+        movieVC.backdropPoster = movies[indexPath.row].backdrop_path
         
+        //print(movies[indexPath.row].backdrop_path)
         navigationController?.pushViewController(movieVC, animated: true)
     }
 }

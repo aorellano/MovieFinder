@@ -33,9 +33,9 @@ extension ScaleImageView {
             
             if let imageData = data, let img = UIImage(data: imageData) {
                 DispatchQueue.main.async {
-                    if img.size.width > 500 {
-                        print("Big image!")
-                    }
+//                    if img.size.width > 500 {
+//                        print("Big image!")
+//                    }
                     // set cache
                     ScaleImageView.cache[url] = img
                     
